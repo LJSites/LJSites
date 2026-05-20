@@ -1,0 +1,155 @@
+<!doctype html>
+<!-- Archetype: neon-dark taqueria. Menu as a JSON object; sticker-like price chips; one accent (mango). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tacos Coronel — Real Tacos, East LA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d1117;--canvas:#010409;--surface:#161b22;--surface-2:#21262d;--border:#30363d;--fg:#e6edf3;--muted:#8b949e;--subtle:#6e7681;--mango:#ffa657;--lime:#7ee787;--rose:#ff7b72;--blue:#58a6ff}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;line-height:1.6}
+.mono{font-family:'JetBrains Mono',monospace}
+a{color:var(--mango);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+header{padding:14px 0;border-bottom:1px solid var(--border);background:var(--canvas);position:sticky;top:0;z-index:10}
+header .row{display:flex;align-items:center;justify-content:space-between}
+header .brand{font-weight:900;letter-spacing:-0.02em;font-size:18px;display:flex;align-items:center;gap:10px}
+header .brand .chip{font-family:'JetBrains Mono',monospace;background:var(--mango);color:var(--canvas);padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+header nav a{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:13px;margin-left:22px}
+header nav a:hover{color:var(--fg)}
+.hero{padding:80px 0 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-50%;right:-10%;width:60%;height:160%;background:radial-gradient(ellipse,rgba(255,166,87,0.12),transparent 60%);pointer-events:none}
+.hero h1{font-size:clamp(48px,8vw,96px);font-weight:900;line-height:0.95;letter-spacing:-0.035em;margin-bottom:20px;position:relative}
+.hero h1 .acc{color:var(--mango)}
+.hero h1 .strike{text-decoration:line-through;text-decoration-color:var(--rose);text-decoration-thickness:4px;color:var(--muted)}
+.hero .lede{color:var(--muted);font-size:18px;max-width:560px;margin-bottom:30px;position:relative}
+.cta{display:flex;gap:12px;flex-wrap:wrap;position:relative}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:13px;border:1px solid var(--border);background:var(--surface);color:var(--fg);transition:.15s;font-weight:600}
+.btn:hover{background:var(--surface-2);text-decoration:none}
+.btn.primary{background:var(--mango);color:var(--canvas);border-color:var(--mango);font-weight:700}
+.btn.primary:hover{background:#fff}
+.section{padding:64px 0;border-bottom:1px solid var(--border)}
+.section h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:24px}
+.section h2::before{content:"// ";color:var(--subtle)}
+.json{background:var(--canvas);border:1px solid var(--border);border-radius:8px;padding:24px 28px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2;overflow-x:auto}
+.json .k{color:var(--blue)}
+.json .s{color:var(--lime)}
+.json .n{color:var(--mango)}
+.json .c{color:var(--subtle)}
+.json .punct{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:22px;position:relative;overflow:hidden}
+.card .price-chip{position:absolute;top:14px;right:14px;background:var(--mango);color:var(--canvas);padding:4px 10px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700}
+.card .name{font-weight:700;font-size:18px;margin-bottom:6px;padding-right:60px}
+.card .desc{color:var(--muted);font-size:13.5px;margin-bottom:12px;min-height:42px}
+.card .tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--lime);text-transform:uppercase;letter-spacing:.06em}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about p{color:var(--muted);font-size:16.5px;margin-bottom:14px}
+.about p.lead{color:var(--fg);font-size:24px;font-weight:600;line-height:1.3;margin-bottom:18px}
+.about img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;border:1px solid var(--border)}
+.tape{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.t{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:22px}
+.t .text{font-size:16px;line-height:1.55;margin-bottom:14px}
+.t .text::before{content:"\"";color:var(--mango);font-size:42px;line-height:0;position:relative;top:14px;margin-right:4px;font-family:'JetBrains Mono',monospace;font-weight:900}
+.t .who{font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:12px}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.kv{font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2.05;background:var(--canvas);border:1px solid var(--border);border-radius:8px;padding:22px 26px}
+.kv .k{color:var(--muted)}.kv .v{color:var(--fg)}
+.map{width:100%;height:320px;border:1px solid var(--border);border-radius:8px;filter:invert(0.92) hue-rotate(180deg)}
+footer{padding:42px 0 60px;color:var(--subtle);font-size:13px}
+footer .credit{margin-top:8px;color:var(--muted)}
+@media (max-width:760px){
+  .cards{grid-template-columns:1fr 1fr}
+  .about,.visit,.tape{grid-template-columns:1fr;gap:24px}
+  header nav{display:none}
+}
+@media (max-width:480px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap row">
+  <div class="brand">TACOS CORONEL <span class="chip mono">EST. 2011</span></div>
+  <nav><a href="#menu">menu</a><a href="#about">about</a><a href="#words">words</a><a href="#visit">visit</a></nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <h1><span class="strike">tacos.</span> <span class="acc">REAL tacos.</span><br>Asada off the plancha.<br>Tortillas off the comal.</h1>
+  <p class="lede">A two-person taquería at the corner of Cesar Chavez and Soto. Mom makes the salsa, Pop runs the grill, my sister and I run the line. Eight tacos, two tortas, three salsas, one rule: nothing precut, nothing premade.</p>
+  <div class="cta">
+    <a class="btn primary" href="tel:+13235550133">📞 (323) 555-0133</a>
+    <a class="btn" href="#menu">view menu →</a>
+  </div>
+</div></section>
+
+<section class="section" id="menu"><div class="wrap">
+  <h2>menu.json</h2>
+  <div class="json mono">
+<span class="punct">{</span><br>
+&nbsp;&nbsp;<span class="k">"tortillas"</span><span class="punct">:</span> <span class="s">"made in-house every two hours"</span><span class="punct">,</span> <span class="c">// corn or flour</span><br>
+&nbsp;&nbsp;<span class="k">"salsas"</span><span class="punct">:</span> <span class="punct">[</span><span class="s">"verde"</span><span class="punct">,</span> <span class="s">"roja"</span><span class="punct">,</span> <span class="s">"habanero-piña"</span><span class="punct">],</span><br>
+&nbsp;&nbsp;<span class="k">"tacos"</span><span class="punct">:</span> <span class="c">// $3.50 each, $9 for three</span><br>
+<span class="punct">}</span>
+  </div>
+  <div class="cards" style="margin-top:24px">
+    <div class="card"><div class="price-chip">$3.50</div><div class="name">Asada</div><div class="desc">Skirt, salt, lime, plancha-charred. Cilantro & onion.</div><div class="tag mono">// signature</div></div>
+    <div class="card"><div class="price-chip">$3.50</div><div class="name">Al pastor</div><div class="desc">Marinated overnight, off the trompo, with pineapple.</div><div class="tag mono">// signature</div></div>
+    <div class="card"><div class="price-chip">$3.50</div><div class="name">Suadero</div><div class="desc">Slow-braised brisket. Falls apart on contact.</div><div class="tag mono">// crowd favorite</div></div>
+    <div class="card"><div class="price-chip">$3.50</div><div class="name">Carnitas</div><div class="desc">Pork shoulder confit. Crispy edges, soft middle.</div><div class="tag mono">// sundays only</div></div>
+    <div class="card"><div class="price-chip">$3.50</div><div class="name">Pollo al carbón</div><div class="desc">Marinated thigh, charcoal grilled, lime crema.</div><div class="tag mono">//</div></div>
+    <div class="card"><div class="price-chip">$3.50</div><div class="name">Nopales</div><div class="desc">Grilled cactus, queso fresco, salsa verde.</div><div class="tag mono">// vegetarian</div></div>
+    <div class="card"><div class="price-chip">$3.50</div><div class="name">Lengua</div><div class="desc">Tender, citrus-cured, diced fine. Trust us.</div><div class="tag mono">//</div></div>
+    <div class="card"><div class="price-chip">$3.50</div><div class="name">Birria</div><div class="desc">Slow-stewed beef with consomé on the side.</div><div class="tag mono">// fri-sun only</div></div>
+    <div class="card"><div class="price-chip">$9</div><div class="name">Torta · asada or pastor</div><div class="desc">Telera roll, refried beans, avocado, pickled jalapeño.</div><div class="tag mono">// monster</div></div>
+  </div>
+</div></section>
+
+<section class="section" id="about"><div class="wrap">
+  <h2>about</h2>
+  <div class="about">
+    <div>
+      <p class="lead">Pop bought this corner stand for $4,200 in 2011. We've added one chair and zero shortcuts since.</p>
+      <p>Our masa is from Tamoa in Mexico City. We grind salsas in a molcajete, not a blender. The trompo runs from 11 to whenever the pastor is gone — usually 7pm on weekdays, 9 on Saturdays.</p>
+      <p>No app, no delivery, no DoorDash. You come, you order at the window, you eat at the standing counter or take it home. That's it.</p>
+    </div>
+    <img src="https://source.unsplash.com/700x700/?taco-pastor,trompo" alt="Pastor on the trompo">
+  </div>
+</div></section>
+
+<section class="section" id="words"><div class="wrap">
+  <h2>what the line says</h2>
+  <div class="tape">
+    <div class="t"><div class="text">Best al pastor in East LA, and I will fight someone about it. The pineapple actually gets caramelized — that's the tell.</div><div class="who mono">— Ricardo H.</div></div>
+    <div class="t"><div class="text">Stood in a 20-minute line at 1pm on a Tuesday. Worth every minute. The suadero taco is the move.</div><div class="who mono">— Stephanie K.</div></div>
+    <div class="t"><div class="text">Three salsas, all banger, all different. The habanero-piña is sneaky hot — start small.</div><div class="who mono">— Daniel V.</div></div>
+    <div class="t"><div class="text">Six tacos and a torta for under twenty bucks. In 2026, in LA. They earned my Sunday-morning loyalty.</div><div class="who mono">— Mayra A.</div></div>
+  </div>
+</div></section>
+
+<section class="section" id="visit"><div class="wrap">
+  <h2>visit</h2>
+  <div class="visit">
+    <div>
+      <div class="kv">
+<span class="k">phone&nbsp;&nbsp;&nbsp;</span> <a class="v" href="tel:+13235550133">(323) 555-0133</a><br>
+<span class="k">address&nbsp;</span> <span class="v">3412 Cesar Chavez Ave,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles, CA 90063</span><br>
+<br>
+<span class="k">mon-thu&nbsp;</span> <span class="v">11:00 – 21:00</span><br>
+<span class="k">fri-sat&nbsp;</span> <span class="v">11:00 – 23:00</span><br>
+<span class="k">sunday&nbsp;&nbsp;</span> <span class="v">10:00 – 18:00</span><br>
+<br>
+<span class="k">cash&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="v">preferred (ATM on-site)</span>
+      </div>
+      <div style="margin-top:20px"><a class="btn primary" href="tel:+13235550133">📞 (323) 555-0133</a></div>
+    </div>
+    <iframe class="map" loading="lazy" src="https://www.google.com/maps?q=Cesar+Chavez+Ave+Los+Angeles+CA&output=embed"></iframe>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="mono" style="color:var(--muted)">// dummy mockup — not a real business</div>
+  <div class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:jcpeng2002@gmail.com">jcpeng2002@gmail.com</a></div>
+</div></footer>
+</body></html>
