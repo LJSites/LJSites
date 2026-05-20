@@ -232,6 +232,37 @@ footer .links a:hover{color:var(--accent-text)}
 footer .credit{margin-top:22px;font-family:var(--mono);font-size:11px;color:var(--fg-subtle);letter-spacing:0.04em;line-height:1.6}
 footer .credit a{color:var(--accent-text)}
 
+/* ============ Pricing ============ */
+.pricing-head{max-width:760px;margin-bottom:40px}
+.pricing-head h2{margin-bottom:14px}
+.pricing-head p{color:var(--fg-mute);font-size:15px;line-height:1.65}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.plan{background:var(--subtle);border:1px solid var(--border-mute);border-radius:8px;padding:28px 30px 30px;display:flex;flex-direction:column;transition:.2s;position:relative;overflow:hidden}
+.plan:hover{border-color:var(--border)}
+.plan-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+.plan-tag{font-family:var(--mono);font-size:10.5px;color:var(--accent-text);letter-spacing:0.16em;text-transform:uppercase}
+.plan-badge{font-family:var(--mono);font-size:10.5px;color:var(--success);background:rgba(63,185,80,0.12);border:1px solid rgba(63,185,80,0.35);padding:3px 9px;border-radius:999px;letter-spacing:0.06em;text-transform:lowercase}
+.plan-badge.alt{color:var(--accent-text);background:var(--accent-mute);border-color:rgba(47,129,247,0.35)}
+.plan h3{font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.18;letter-spacing:-0.018em;color:var(--fg);margin-bottom:20px;max-width:380px}
+.plan h3 em{color:var(--accent-text);font-style:italic;font-weight:400}
+.plan-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;padding:18px 0;border-top:1px solid var(--border-mute);border-bottom:1px solid var(--border-mute);margin-bottom:18px}
+.plan-price .amt{font-family:var(--serif);font-weight:500;font-size:38px;letter-spacing:-0.026em;line-height:1;color:var(--fg)}
+.plan-price .amt-sm{font-family:var(--serif);font-weight:500;font-size:26px;letter-spacing:-0.018em;line-height:1;color:var(--fg)}
+.plan-price .unit{font-family:var(--mono);font-size:10.5px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.1em;line-height:1.4;max-width:120px}
+.plan-price .sep{font-family:var(--mono);font-size:18px;color:var(--accent-text);margin:0 2px;opacity:.7}
+.plan-price.scoped{flex-direction:column;align-items:flex-start;gap:6px}
+.plan-price.scoped .amt-sm{font-size:24px;color:var(--fg)}
+.plan-price.scoped .amt-sm em{font-style:italic;color:var(--accent-text);font-weight:400}
+.plan-note{color:var(--fg-mute);font-size:13.5px;line-height:1.6;margin-bottom:20px}
+.plan-feat{list-style:none;padding:0;margin:0 0 24px;flex:1}
+.plan-feat li{display:grid;grid-template-columns:14px 1fr;gap:12px;padding:9px 0;border-bottom:1px dashed var(--border-mute);font-size:13.5px;color:var(--fg);line-height:1.5}
+.plan-feat li:last-child{border-bottom:0}
+.plan-feat li::before{content:"›";color:var(--accent-text);font-family:var(--mono);font-weight:600;font-size:14px;line-height:1.45}
+.plan-feat li b{font-weight:600;color:var(--fg)}
+.plan-feat li em{color:var(--accent-text);font-style:italic;font-weight:500;font-family:var(--serif)}
+.plan-feat li .sub{display:block;color:var(--fg-mute);font-size:12px;margin-top:2px;line-height:1.45}
+.plan .btn{align-self:flex-start;margin-top:auto}
+
 /* ============ Responsive ============ */
 @media (max-width:1100px){
   .repos{grid-template-columns:repeat(2,1fr)}
@@ -249,7 +280,8 @@ footer .credit a{color:var(--accent-text)}
   .stat-strip{grid-template-columns:repeat(2,1fr);margin-top:48px}
   .stat-strip .s:nth-child(2){border-right:0}
   .stat-strip .s:nth-child(1),.stat-strip .s:nth-child(2){border-bottom:1px solid var(--border-mute)}
-  .repos,.features,.pipe,.about,.contact{grid-template-columns:1fr;gap:32px}
+  .repos,.features,.pipe,.about,.contact,.plans{grid-template-columns:1fr;gap:32px}
+  .plans{gap:18px}
   .pipe .step{padding:24px 0;border-right:0;border-bottom:1px solid var(--border-mute)}
   .pipe .step:last-child{border-bottom:0}
   .pipe .step:not(:first-child){padding-left:0}
@@ -512,9 +544,83 @@ footer .credit a{color:var(--accent-text)}
   </div>
 </div></section>
 
+<!-- ============ Pricing ============ -->
+<section class="section" id="pricing"><div class="wrap">
+  <div class="sublabel">05 · Pricing</div>
+  <div class="pricing-head">
+    <h2 class="serif">Plain pricing on the front. <em>A conversation on the rest.</em></h2>
+    <p>One honest number for the front-end work most small businesses actually need. For everything beyond that — ordering, reservations, accounts, payments — we sit down with you first and price only what you'll really use.</p>
+  </div>
+
+  <div class="plans">
+
+    <!-- Front-end plan -->
+    <div class="plan">
+      <div class="plan-head">
+        <div class="plan-tag">Plan 01 · Front-end</div>
+        <div class="plan-badge">most-popular</div>
+      </div>
+      <h3 class="serif">A storefront that <em>earns its keep.</em></h3>
+      <div class="plan-price">
+        <span class="amt">$1,000</span>
+        <span class="unit">one-time<br>setup</span>
+        <span class="sep">+</span>
+        <span class="amt-sm">$200</span>
+        <span class="unit">per month<br>care &amp; hosting</span>
+      </div>
+      <p class="plan-note">Everything a small business needs to look as good online as they do in person. Cancel any month — the site stays yours either way.</p>
+      <ul class="plan-feat">
+        <li><span><b>Hand-tuned single-page design.</b><span class="sub">Picked archetype, real typography, real photos. Never a template.</span></span></li>
+        <li><span><b>Mobile-first responsive.</b><span class="sub">Looks correct on every phone, tablet, and big screen.</span></span></li>
+        <li><span><b>Working contact form.</b><span class="sub">Submissions forwarded to your email. No spam, no plugins.</span></span></li>
+        <li><span><b>Embedded Google Map.</b><span class="sub">One-tap directions, accurate pin, branded styling.</span></span></li>
+        <li><span><b>Click-to-call &amp; click-to-text.</b><span class="sub">Big phone button on every screen size.</span></span></li>
+        <li><span><b>Photo gallery / lightbox.</b><span class="sub">Show off the space, the food, the work. Up to 24 images.</span></span></li>
+        <li><span><b>SEO + social meta.</b><span class="sub">Open Graph cards so shared links look polished on iMessage and Instagram.</span></span></li>
+        <li><span><b>Hosting, SSL &amp; CDN.</b><span class="sub">Fast worldwide, HTTPS out of the box, zero downtime.</span></span></li>
+        <li><span><b>Custom domain.</b><span class="sub">Bring your <code style="font-family:var(--mono);font-size:12px;color:var(--accent-text)">.com</code> — we wire it for you.</span></span></li>
+        <li><span><b>Plain-English analytics.</b><span class="sub">Who visited, what they clicked, where they came from.</span></span></li>
+        <li><span><b>Monthly content updates included.</b><span class="sub">Hours change, fresh photo, new menu item — usually shipped same day.</span></span></li>
+        <li><span><b>Quarterly content refresh.</b><span class="sub">Once a quarter we sit down with you and tune the copy.</span></span></li>
+      </ul>
+      <a class="btn primary" href="#contact">Start a conversation <span class="arr">&rarr;</span></a>
+    </div>
+
+    <!-- Back-end plan -->
+    <div class="plan">
+      <div class="plan-head">
+        <div class="plan-tag">Plan 02 · Back-end</div>
+        <div class="plan-badge alt">by-scoping</div>
+      </div>
+      <h3 class="serif">When the site needs <em>to do work.</em></h3>
+      <div class="plan-price scoped">
+        <span class="amt-sm">From <em>conversation,</em></span>
+        <span class="amt-sm">not a calculator.</span>
+      </div>
+      <p class="plan-note">We don't quote back-end work off a brochure — nobody actually needs the same set of features. Tell us what your business should be able to do; we come back with a fixed quote that prices only what you'll really use.</p>
+      <ul class="plan-feat">
+        <li><span><b>Online ordering &amp; e-commerce.</b><span class="sub">From a single-product checkout to full menus with modifiers and pickup windows.</span></span></li>
+        <li><span><b>Reservations &amp; bookings.</b><span class="sub">Real-time slots, deposits, SMS reminders, no-show policies that actually fire.</span></span></li>
+        <li><span><b>Customer accounts &amp; loyalty.</b><span class="sub">Profiles, order history, points, gift cards, referrals.</span></span></li>
+        <li><span><b>Payments.</b><span class="sub">Stripe, Square, Apple Pay, ACH — wired carefully, audited for PCI.</span></span></li>
+        <li><span><b>CMS you can actually use.</b><span class="sub">Edit your own site without calling us. Optional.</span></span></li>
+        <li><span><b>Inventory &amp; multi-location.</b><span class="sub">Stock-aware listings, location-specific menus, branch hours.</span></span></li>
+        <li><span><b>Email &amp; SMS automation.</b><span class="sub">Receipts, drip sequences, win-back, abandoned-cart. Mailchimp, ConvertKit, Twilio.</span></span></li>
+        <li><span><b>Custom dashboards.</b><span class="sub">The number you check every morning — make it the first thing on the screen.</span></span></li>
+        <li><span><b>POS &amp; third-party integrations.</b><span class="sub">Square, Toast, Lightspeed, QuickBooks, Google Calendar, Slack.</span></span></li>
+        <li><span><b>API work &amp; automations.</b><span class="sub">Tie the parts of your business together — once, properly.</span></span></li>
+        <li><span><b>Member areas &amp; paywalls.</b><span class="sub">Gated content, subscriptions, role-based access for staff or wholesale.</span></span></li>
+        <li><span><em>If you can describe it, we can probably build it.</em><span class="sub">We've yet to be asked something we couldn't scope.</span></span></li>
+      </ul>
+      <a class="btn primary" href="#contact">Book a scoping call <span class="arr">&rarr;</span></a>
+    </div>
+
+  </div>
+</div></section>
+
 <!-- ============ Contact ============ -->
 <section class="section" id="contact"><div class="wrap">
-  <div class="sublabel">05 · Get in touch</div>
+  <div class="sublabel">06 · Get in touch</div>
   <div class="contact">
     <div class="form">
       <div class="form-body">
