@@ -70,6 +70,10 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
 .stat-strip .s:last-child{border-right:0}
 .stat-strip .s .v{font-family:var(--serif);font-weight:500;font-size:30px;color:var(--fg);letter-spacing:-0.014em;line-height:1}
 .stat-strip .s .v em{color:var(--accent-text);font-style:italic}
+.stat-strip .s .v .salary{display:inline-block;transition:color .45s ease,text-decoration-color .45s ease}
+.stat-strip .s .v .salary.struck{text-decoration:line-through;text-decoration-color:var(--danger);text-decoration-thickness:2px;color:var(--fg-mute)}
+.stat-strip .s .v .reveal{display:inline-block;opacity:0;margin-left:8px;font-size:0.82em;color:var(--accent-text);font-style:italic;transition:opacity .55s ease,transform .55s ease;transform:translateX(-4px)}
+.stat-strip .s .v .reveal.show{opacity:1;transform:translateX(0)}
 .stat-strip .s .k{font-family:var(--mono);font-size:10.5px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.14em}
 
 /* ============ Section base ============ */
@@ -320,7 +324,7 @@ footer .credit a{color:var(--accent-text)}
   <div class="stat-strip">
     <div class="s"><div class="v serif"><em><span class="count" data-target="25" data-suffix="+">25+</span></em></div><div class="k">Sites shipped</div></div>
     <div class="s"><div class="v serif"><span class="count" data-prefix="~" data-target="3">~3</span> <em>days</em></div><div class="k">Discover &rarr; live</div></div>
-    <div class="s"><div class="v serif"><em>Free</em></div><div class="k">Cost to look</div></div>
+    <div class="s"><div class="v serif"><span class="count salary" data-prefix="$" data-target="127420" data-format="comma">$127,420</span><em class="reveal">Free</em></div><div class="k">Cost to look · regular dev salary</div></div>
     <div class="s"><div class="v serif">CA</div><div class="k">Statewide</div></div>
   </div>
 </div></section>
@@ -681,13 +685,24 @@ footer .credit a{color:var(--accent-text)}
     var target = +el.dataset.target;
     var prefix = el.dataset.prefix || '';
     var suffix = el.dataset.suffix || '';
+    var comma = el.dataset.format === 'comma';
     var dur = 1400, start = performance.now();
-    el.textContent = prefix + '0' + suffix;
+    function fmt(n){ return comma ? n.toLocaleString() : String(n); }
+    el.textContent = prefix + fmt(0) + suffix;
     function tick(now){
       var t = Math.min(1, (now - start) / dur);
       var eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
-      el.textContent = prefix + Math.round(eased * target) + suffix;
-      if (t < 1) requestAnimationFrame(tick);
+      el.textContent = prefix + fmt(Math.round(eased * target)) + suffix;
+      if (t < 1) {
+        requestAnimationFrame(tick);
+      } else if (el.classList.contains('salary')) {
+        // salary stat: pause a beat, strike the number, reveal "Free"
+        setTimeout(function(){
+          el.classList.add('struck');
+          var rev = el.parentElement && el.parentElement.querySelector('.reveal');
+          if (rev) rev.classList.add('show');
+        }, 450);
+      }
     }
     requestAnimationFrame(tick);
   }
