@@ -24,6 +24,8 @@
   --serif:"Fraunces","Iowan Old Style",Georgia,serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 html,body{background:var(--canvas);color:var(--fg);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{max-width:100%;display:block}
 a{color:var(--accent-text);text-decoration:none}
@@ -63,12 +65,12 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
 .btn.primary{background:var(--fg);color:var(--canvas);border-color:var(--fg)}
 .btn.primary:hover{background:var(--accent-text);border-color:var(--accent-text);color:#fff}
 
-.stat-strip{margin-top:72px;display:grid;grid-template-columns:repeat(4,1fr);max-width:780px;border-top:1px solid var(--border-mute);border-bottom:1px solid var(--border-mute)}
-.stat-strip .s{padding:22px 28px 22px 0;border-right:1px solid var(--border-mute)}
+.stat-strip{margin-top:80px;display:grid;grid-template-columns:repeat(4,1fr);max-width:860px;border-top:1px solid var(--border-mute);border-bottom:1px solid var(--border-mute)}
+.stat-strip .s{padding:28px 20px;border-right:1px solid var(--border-mute);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
 .stat-strip .s:last-child{border-right:0}
-.stat-strip .s .v{font-family:var(--serif);font-weight:500;font-size:28px;color:var(--fg);letter-spacing:-0.014em;line-height:1}
+.stat-strip .s .v{font-family:var(--serif);font-weight:500;font-size:30px;color:var(--fg);letter-spacing:-0.014em;line-height:1}
 .stat-strip .s .v em{color:var(--accent-text);font-style:italic}
-.stat-strip .s .k{font-family:var(--mono);font-size:10.5px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.12em;margin-top:8px}
+.stat-strip .s .k{font-family:var(--mono);font-size:10.5px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:0.14em}
 
 /* ============ Section base ============ */
 .section{padding:96px 0}
@@ -276,9 +278,9 @@ footer .credit a{color:var(--accent-text)}
 
 <!-- ============ Hero ============ -->
 <section class="hero" id="top"><div class="wrap">
-  <div class="hero-kicker">Pasadena · Greater LA · Building speculatively</div>
+  <div class="hero-kicker">Pasadena studio · Serving all of California · Built by Jimmy &amp; Levin</div>
   <h1>We build the website<br><em>they didn't know</em> they wanted yet.</h1>
-  <p class="lede">LJ Sites is a Pasadena studio shipping single-page mockup websites for LA businesses that don't have one. We find a place we love, build them one beautiful HTML file, and hand it over if they keep it. No retainer. No agency. Real photos. Real maps. <em>Hand-tuned typography.</em></p>
+  <p class="lede">LJ Sites is a Pasadena studio shipping single-page mockup websites for California businesses that don't have one. We find a place we love, build them one beautiful HTML file, and hand it over if they keep it. No retainer. No agency. Real photos. Real maps. <em>Hand-tuned typography.</em></p>
   <div class="hero-actions">
     <a class="btn primary" href="#contact">Start a project <span class="arr">&rarr;</span></a>
     <a class="btn" href="#pinned">See recent work</a>
@@ -287,7 +289,7 @@ footer .credit a{color:var(--accent-text)}
     <div class="s"><div class="v serif"><em>25+</em></div><div class="k">Sites shipped</div></div>
     <div class="s"><div class="v serif">~3 <em>days</em></div><div class="k">Discover &rarr; live</div></div>
     <div class="s"><div class="v serif">$0</div><div class="k">Cost to look</div></div>
-    <div class="s"><div class="v serif">LA</div><div class="k">Area, for now</div></div>
+    <div class="s"><div class="v serif">CA</div><div class="k">Statewide</div></div>
   </div>
 </div></section>
 
@@ -448,13 +450,13 @@ footer .credit a{color:var(--accent-text)}
       </article>
       <article class="feat quote-feat" data-tag="testimony">
         <header class="feat-head"><span class="feat-tag">testimony.html</span><span class="feat-kind">Customer testimony</span></header>
-        <div class="feat-body quote-body" style="--bg:url('https://lh3.googleusercontent.com/places/ANXAkqEhUbjG0ogEgHIg7nYna6LUq7c1Jmr_mBTe2d_F7-wl-1t888VKx14RpoVIONLI3hdXvQ1PY12VmRr2OWgO1kSljgb37JhLyT4=s4800-w640')">
+        <div class="feat-body quote-body" style="--bg:url('https://lh3.googleusercontent.com/place-photos/AJRVUZM7af-VP-JI9iMdirvYB6gThLpCtnpDhbAN-QdRfsmkZR7TSrdWl4TDwTqUgN_wcCyDrCTaJic-FhRbxoGrclhiw1HC8zUvmNGUS8b240Vgqybs9DChf2EUqrLwEyUzG1YW29YN7s34aVWfsBU=s4800-w1600')">
           <div class="feat-hero-overlay"></div>
           <blockquote>
             <span class="q-mark">"</span>
-            Walked in for a trim, walked out feeling like a different person. The staff actually
-            <em>listened</em> — that doesn't happen everywhere on Broadway.
-            <footer>— Maria G. · regular at MONARCH BEAUTY SALON /</footer>
+            Walked in for a trim, walked out feeling like a different person. The barbers actually
+            <em>listened</em> — that doesn't happen on most chairs around here.
+            <footer>— Marcus R. · regular at Pasadena Barber Shop</footer>
           </blockquote>
         </div>
       </article>
@@ -482,7 +484,7 @@ footer .credit a{color:var(--accent-text)}
   <div class="pipe">
     <div class="step"><div class="n">01 &middot; Discover</div><h4 class="serif">Find the business</h4><p>We sweep the LA area for small businesses with no website — or only a Facebook page. Real places that deserve a real front door.</p></div>
     <div class="step"><div class="n">02 &middot; Design</div><h4 class="serif">Build the mockup</h4><p>Photos, hours, menu, testimonies — all real, all hand-set. One archetype per site, picked to fit the place. No templates.</p></div>
-    <div class="step"><div class="n">03 &middot; Ship</div><h4 class="serif">Publish to the web</h4><p>Within minutes the mockup is live on a clean ljsites.github.io URL. We hand it to the owner. They can call themselves from it.</p></div>
+    <div class="step"><div class="n">03 &middot; Ship</div><h4 class="serif">Publish to the web</h4><p>Within minutes the mockup is live on a clean ljsites.github.io URL. We hand it to the owner — anywhere in California. They can call themselves from it.</p></div>
     <div class="step"><div class="n">04 &middot; Handover</div><h4 class="serif">It's theirs</h4><p>Flat fee, no monthly. We transfer the repo, point the domain, and stay on call for the first month. Otherwise it stays as our portfolio.</p></div>
   </div>
 </div></section>
@@ -493,16 +495,16 @@ footer .credit a{color:var(--accent-text)}
   <div class="about">
     <div class="copy">
       <h2 class="serif">A two-person studio<br><em>in Pasadena.</em></h2>
-      <p class="lead">We kept walking into restaurants and shops we loved that didn't show up on Google. We got tired of <em>that.</em></p>
+      <p class="lead">Jimmy &amp; Levin. We kept walking into restaurants and shops we loved that didn't show up on Google. We got tired of <em>that.</em></p>
       <p>So we built a pipeline: find local places without a real online front door, ship them a single-page mockup as a sales pitch, and let the work speak for itself. No cold outreach, no pitch decks, no contracts to sign before you've seen what we'd actually make for you.</p>
-      <p>Every site is hand-tuned. We don't ship templates. We don't take retainers. If you decide to keep it, we transfer the repo and disappear.</p>
+      <p>Every site is hand-tuned. We don't ship templates. We don't take retainers. If you decide to keep it, we transfer the repo and disappear. We started in Pasadena and now serve businesses anywhere in California.</p>
     </div>
     <aside class="side">
       <div class="side-row"><span class="k">Studio</span><span class="v">LJ Sites</span></div>
       <div class="side-row"><span class="k">Based</span><span class="v">Pasadena, CA</span></div>
-      <div class="side-row"><span class="k">Serving</span><span class="v">Greater LA</span></div>
+      <div class="side-row"><span class="k">Serving</span><span class="v">All of California</span></div>
       <div class="side-row"><span class="k">Founded</span><span class="v">2025</span></div>
-      <div class="side-row"><span class="k">Team</span><span class="v">Two people</span></div>
+      <div class="side-row"><span class="k">Team</span><span class="v">Jimmy &amp; Levin</span></div>
       <div class="side-row"><span class="k">Stack</span><span class="v">HTML &middot; CSS &middot; <em>taste</em></span></div>
       <div class="side-row"><span class="k">Retainer</span><span class="v"><em>Never</em></span></div>
       <div class="side-row"><span class="k">Deliver</span><span class="v">One HTML file</span></div>
@@ -519,9 +521,9 @@ footer .credit a{color:var(--accent-text)}
         <h3 class="serif">Send us <em>a line.</em></h3>
         <p>Tell us the name of the place, what you do, and roughly where you are. We'll come back with a draft you can look at the same week.</p>
         <div class="row"><span class="k">Email</span><span class="v"><a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></span></div>
-        <div class="row"><span class="k">Phone</span><span class="v">On request</span></div>
+        <div class="row"><span class="k">Phone</span><span class="v"><a href="tel:+19168474988">(916) 847-4988</a></span></div>
         <div class="row"><span class="k">Based</span><span class="v">Pasadena, California</span></div>
-        <div class="row"><span class="k">Serving</span><span class="v">Greater LA &mdash; Pasadena to Long Beach</span></div>
+        <div class="row"><span class="k">Serving</span><span class="v">All of California</span></div>
         <div class="btn-row"><a class="btn primary" href="mailto:LJsites.llc@gmail.com">Email LJ Sites <span class="arr">&rarr;</span></a></div>
       </div>
     </div>
@@ -545,7 +547,7 @@ footer .credit a{color:var(--accent-text)}
     <div class="brand"><img src="logo.svg" alt="LJ Sites"><span class="a serif">LJ Sites<span class="dot">.</span></span></div>
     <div class="links"><a href="#how">how</a><a href="#pinned">work</a><a href="#feature-gallery">features</a><a href="#about">about</a><a href="#contact">contact</a></div>
   </div>
-  <div class="credit">© 2026 LJ Sites · Pasadena, CA · Reach us at <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>. Mockup businesses above are real LA-area places we'd love to build sites for. Photos: Google Places API.</div>
+  <div class="credit">© 2026 LJ Sites · Jimmy &amp; Levin · Pasadena, CA · Serving all of California · <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a> · <a href="tel:+19168474988">(916) 847-4988</a>. Mockup businesses above are real California places we'd love to build sites for. Photos: Google Places API.</div>
 </div></footer>
 
 <script>
