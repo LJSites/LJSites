@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="LJ Sites">
+  <defs>
+    <style>
+      .bg { fill: #0f1f47; }
+      .mark { fill: #ffffff; font-family: "Bodoni Moda", "Cormorant Garamond", "Playfair Display", Georgia, serif; font-weight: 700; }
+      .name { fill: #ffffff; font-family: "Inter", "Helvetica Neue", Arial, sans-serif; font-weight: 600; letter-spacing: 24px; }
+      .dot  { fill: #3b82f6; }
+    </style>
+  </defs>
+  <rect class="bg" width="1024" height="1024"/>
+  <!-- Stylised LJ monogram: two serif strokes sharing a single bowl at the base. -->
+  <g class="mark">
+    <!-- L vertical with top serif -->
+    <path d="M 332 240
+             L 332 700
+             Q 332 760  390 760
+             L 470 760
+             Q 432 760  432 712
+             L 432 240
+             Z" />
+    <!-- top horizontal serif on the L -->
+    <rect x="288" y="232" width="180" height="22"/>
+    <!-- J vertical + curl -->
+    <path d="M 592 240
+             L 592 700
+             Q 592 760  534 760
+             L 470 760
+             Q 528 760  528 712
+             L 528 240
+             Z" />
+    <!-- top horizontal serif on the J -->
+    <rect x="556" y="232" width="180" height="22"/>
+  </g>
+  <!-- SITES wordmark -->
+  <text class="name" x="370" y="864" font-size="98">SITES</text>
+  <!-- blue accent dot -->
+  <circle class="dot" cx="704" cy="852" r="14"/>
+</svg>
