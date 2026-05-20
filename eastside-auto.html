@@ -1,0 +1,164 @@
+<!doctype html>
+<!-- Archetype: diagnostic terminal. Service list as $ commands; status pills; honest no-BS auto shop. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eastside Auto — Honest Repair, Boyle Heights</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d1117;--canvas:#010409;--surface:#161b22;--surface-2:#21262d;--border:#30363d;--fg:#e6edf3;--muted:#8b949e;--subtle:#6e7681;--green:#7ee787;--amber:#ffa657;--red:#f85149;--blue:#58a6ff;--prompt:#7ee787}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;line-height:1.6}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{padding:14px 0;border-bottom:1px solid var(--border);background:var(--canvas);position:sticky;top:0;z-index:10}
+header .row{display:flex;align-items:center;justify-content:space-between}
+header .brand{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--fg)}
+header .brand .at{color:var(--green)}
+header .brand .path{color:var(--blue)}
+header nav a{color:var(--muted);font-size:13px;margin-left:22px;font-family:'JetBrains Mono',monospace}
+header nav a:hover{color:var(--fg)}
+.hero{padding:80px 0 56px;border-bottom:1px solid var(--border)}
+.term{background:var(--canvas);border:1px solid var(--border);border-radius:8px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:14px}
+.term .bar{display:flex;align-items:center;padding:9px 14px;background:var(--surface-2);border-bottom:1px solid var(--border);gap:8px;font-size:12px;color:var(--muted)}
+.term .bar .lights{display:flex;gap:6px}
+.term .bar .lights span{width:11px;height:11px;border-radius:50%}
+.term .bar .lights .r{background:#f85149}.term .bar .lights .y{background:#e3b341}.term .bar .lights .g{background:#3fb950}
+.term .body{padding:22px 24px;line-height:1.85}
+.term .p{color:var(--prompt)}
+.term .c{color:var(--subtle)}
+.term .v{color:var(--green)}
+.term .b{color:var(--blue)}
+.term .a{color:var(--amber)}
+h1.tag{font-size:clamp(38px,5.5vw,60px);font-weight:700;letter-spacing:-0.022em;line-height:1.05;margin:36px 0 16px}
+h1.tag .hl{color:var(--amber)}
+.lede{color:var(--muted);font-size:18px;max-width:620px;margin-bottom:28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:13px;border:1px solid var(--border);background:var(--surface);color:var(--fg);transition:.15s}
+.btn:hover{background:var(--surface-2);text-decoration:none}
+.btn.primary{background:#238636;border-color:#2ea043;color:#fff}
+.btn.primary:hover{background:#2ea043}
+.section{padding:64px 0;border-bottom:1px solid var(--border)}
+.section h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:24px}
+.section h2::before{content:"// ";color:var(--subtle)}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.svc .row{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:18px 20px;font-family:'JetBrains Mono',monospace}
+.svc .row .cmd{font-size:14px;color:var(--fg);margin-bottom:6px}
+.svc .row .cmd .p{color:var(--prompt)}
+.svc .row .cmd .a{color:var(--amber)}
+.svc .row .desc{color:var(--muted);font-size:12.5px;font-family:'Inter',sans-serif}
+.svc .row .price{color:var(--green);font-size:12px;margin-top:8px;display:flex;justify-content:space-between;align-items:center}
+.svc .row .pill{padding:2px 8px;border:1px solid #1b6e2c;background:rgba(46,160,67,0.12);color:var(--green);border-radius:999px;font-size:10.5px;letter-spacing:.04em}
+.about{display:grid;grid-template-columns:1.1fr 0.9fr;gap:42px;align-items:center}
+.about p{color:var(--muted);font-size:16.5px;margin-bottom:14px}
+.about p.lead{color:var(--fg);font-size:22px;line-height:1.4;margin-bottom:18px}
+.about-img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid var(--border)}
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.q{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.q .head{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);padding:10px 16px;background:var(--canvas);border-bottom:1px solid var(--border)}
+.q .head .pill{margin-left:8px;padding:1px 8px;border-radius:999px;font-size:10.5px;background:rgba(46,160,67,0.15);color:var(--green);border:1px solid #1b6e2c}
+.q .body{padding:18px 20px;font-size:15px;color:var(--fg)}
+.q .body .who{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);margin-top:12px}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.codeblock{background:var(--canvas);border:1px solid var(--border);border-radius:8px;padding:22px 24px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.95}
+.codeblock .k{color:var(--blue)}.codeblock .v{color:var(--green)}.codeblock .c{color:var(--subtle)}
+.map{width:100%;height:320px;border:1px solid var(--border);border-radius:8px;filter:invert(0.92) hue-rotate(180deg)}
+footer{padding:42px 0 60px;color:var(--subtle);font-size:13px}
+footer .credit{margin-top:8px;color:var(--muted)}
+@media (max-width:760px){
+  .svc,.about,.quotes,.visit{grid-template-columns:1fr}
+  header nav{display:none}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap row">
+  <div class="brand mono">eastside-auto<span class="at">@</span><span class="path">boyle-heights</span> ~ $</div>
+  <nav><a href="#services">services</a><a href="#about">about</a><a href="#logs">customer-log</a><a href="#contact">contact</a></nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="term">
+    <div class="bar"><div class="lights"><span class="r"></span><span class="y"></span><span class="g"></span></div><span class="mono">~/eastside-auto/diagnostics.log</span></div>
+    <div class="body">
+<span class="p">$</span> <span class="b">eastside</span> --tagline<br>
+<span class="v">"the diagnosis is free. the repair is honest. the loaner is a Civic."</span><br><br>
+<span class="p">$</span> <span class="b">eastside</span> status<br>
+<span class="c">→</span> <span class="v">open</span>  <span class="c">// mon–fri 07:30–18:00 · sat 08:00–14:00</span><br>
+<span class="c">→</span> next available slot: <span class="a">tomorrow 09:30</span><br>
+<span class="c">→</span> diagnostic loaner: <span class="v">available</span>
+    </div>
+  </div>
+  <h1 class="tag">No upsells, no surprises, <span class="hl">no jargon</span>.</h1>
+  <p class="lede">Two ASE-certified techs, one honest service writer, and a policy you'll like: we call before we touch anything. Twenty-two years on Soto Street, still the same family.</p>
+  <div class="cta">
+    <a class="btn primary" href="tel:+13235550118">📞 (323) 555-0118</a>
+    <a class="btn" href="#services">view services →</a>
+  </div>
+</div></section>
+
+<section class="section" id="services"><div class="wrap">
+  <h2>services</h2>
+  <div class="svc">
+    <div class="row"><div class="cmd mono"><span class="p">$</span> diagnose <span class="a">--check-engine</span></div><div class="desc">Full OBD scan and a real conversation about what we found. No mystery fees.</div><div class="price"><span class="pill">FREE</span><span>30–45 min</span></div></div>
+    <div class="row"><div class="cmd mono"><span class="p">$</span> service <span class="a">--oil-change</span></div><div class="desc">Full synthetic, new filter, tire-pressure check, fluids topped, multi-point inspection.</div><div class="price"><span>$89</span><span>~45 min</span></div></div>
+    <div class="row"><div class="cmd mono"><span class="p">$</span> brake <span class="a">--inspect</span></div><div class="desc">Pads, rotors, lines, fluid. Replace only what's actually worn — measured, not guessed.</div><div class="price"><span class="pill">FREE inspect</span><span>~30 min</span></div></div>
+    <div class="row"><div class="cmd mono"><span class="p">$</span> service <span class="a">--timing-belt</span></div><div class="desc">Belt, tensioner, water pump if needed. We'll show you the old parts before they go in the bin.</div><div class="price"><span>quote</span><span>same day</span></div></div>
+    <div class="row"><div class="cmd mono"><span class="p">$</span> ac <span class="a">--service</span></div><div class="desc">Recharge, leak check, condenser inspect. If it's not blowing cold, we figure out why first.</div><div class="price"><span>$149</span><span>~1 hr</span></div></div>
+    <div class="row"><div class="cmd mono"><span class="p">$</span> pre-purchase <span class="a">--inspect</span></div><div class="desc">Buying a used car? Bring it by. 60-point check, drive test, written report.</div><div class="price"><span>$129</span><span>~90 min</span></div></div>
+  </div>
+</div></section>
+
+<section class="section" id="about"><div class="wrap">
+  <h2>about</h2>
+  <div class="about">
+    <div>
+      <p class="lead">My dad opened this shop in 2003 with two bays and a coffee maker that's still here.</p>
+      <p>We don't have a fancy waiting room. We have honest techs, a clean shop floor, and the kind of regulars who bring their kids' cars in when those kids are old enough to drive.</p>
+      <p>If the repair isn't worth doing — because the car isn't worth it — we'll tell you that, too. We'd rather lose the ticket than your trust.</p>
+    </div>
+    <img class="about-img" src="https://source.unsplash.com/700x520/?auto-repair,garage-lift" alt="Auto shop floor">
+  </div>
+</div></section>
+
+<section class="section" id="logs"><div class="wrap">
+  <h2>customer-log</h2>
+  <div class="quotes">
+    <div class="q"><div class="head mono">ticket #2104 · 2014 Civic · 168k mi <span class="pill">RESOLVED</span></div><div class="body">"Quoted me $400 less than the dealer for the same job, and showed me the worn part. Found my mechanic for life."<div class="who">— Carlos M.</div></div></div>
+    <div class="q"><div class="head mono">ticket #1987 · 2018 RAV4 · 72k mi <span class="pill">RESOLVED</span></div><div class="body">"Diagnosed an issue another shop missed twice. Honest, fast, and they call before they touch anything — exactly what they promise."<div class="who">— Tanya R.</div></div></div>
+    <div class="q"><div class="head mono">ticket #2231 · 2009 Sienna · 224k mi <span class="pill">RESOLVED</span></div><div class="body">"Talked me OUT of a $1,200 repair I didn't actually need. Who does that anymore?"<div class="who">— Eduardo G.</div></div></div>
+    <div class="q"><div class="head mono">ticket #2058 · 2016 Mazda3 · 88k mi <span class="pill">RESOLVED</span></div><div class="body">"Pre-purchase inspection saved me from a lemon. Wrote up a 4-page report and walked me through every line."<div class="who">— Jenn S.</div></div></div>
+  </div>
+</div></section>
+
+<section class="section" id="contact"><div class="wrap">
+  <h2>contact</h2>
+  <div class="visit">
+    <div>
+      <div class="codeblock">
+<span class="c"># shop.config</span><br>
+<span class="k">phone</span>    = <a class="v" href="tel:+13235550118">(323) 555-0118</a><br>
+<span class="k">email</span>    = <a class="v" href="mailto:hello@eastsideauto.example">hello@eastsideauto.example</a><br>
+<span class="k">address</span>  = <span class="v">2741 S Soto St, Los Angeles, CA 90023</span><br>
+<br>
+<span class="c"># hours</span><br>
+<span class="k">mon-fri</span>  = <span class="v">07:30 – 18:00</span><br>
+<span class="k">sat&nbsp;&nbsp;&nbsp;&nbsp;</span> = <span class="v">08:00 – 14:00</span><br>
+<span class="k">sun&nbsp;&nbsp;&nbsp;&nbsp;</span> = <span class="v">closed</span><br>
+<br>
+<span class="c"># loaners available — ask when you book</span>
+      </div>
+      <div style="margin-top:20px"><a class="btn primary" href="tel:+13235550118">📞 (323) 555-0118</a></div>
+    </div>
+    <iframe class="map" loading="lazy" src="https://www.google.com/maps?q=S+Soto+St+Los+Angeles+CA&output=embed"></iframe>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="mono" style="color:var(--muted)">// dummy mockup — not a real business</div>
+  <div class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:jcpeng2002@gmail.com">jcpeng2002@gmail.com</a></div>
+</div></footer>
+</body></html>
