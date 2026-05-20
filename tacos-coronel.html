@@ -1,155 +1,216 @@
 <!doctype html>
-<!-- Archetype: neon-dark taqueria. Menu as a JSON object; sticker-like price chips; one accent (mango). -->
+<!-- ARCHETYPE: Sun-drenched Mexican folk poster — marigold canvas, salsa-red and cocoa, papel-picado scallops,
+     Abril Fatface display with hand-energy. Completely different family from the dark/editorial salon and the
+     paper-pale machinist; loud, hot daytime, NOT the late-night brown of the existing tacos-el-pecas mockup. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tacos Coronel — Real Tacos, East LA</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@500;700&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0d1117;--canvas:#010409;--surface:#161b22;--surface-2:#21262d;--border:#30363d;--fg:#e6edf3;--muted:#8b949e;--subtle:#6e7681;--mango:#ffa657;--lime:#7ee787;--rose:#ff7b72;--blue:#58a6ff}
+:root{
+  --marigold:#f6c34a;--marigold-2:#e8a924;--canvas:#f9d56b;--cream:#fff3cd;--ink:#1c0f08;--cocoa:#3b1d0b;
+  --salsa:#c0331a;--salsa-2:#8c1d10;--lime:#62782c;--leaf:#1d4c1f;--rule:#1c0f08;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;line-height:1.6}
-.mono{font-family:'JetBrains Mono',monospace}
-a{color:var(--mango);text-decoration:none}
-a:hover{text-decoration:underline}
-.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-header{padding:14px 0;border-bottom:1px solid var(--border);background:var(--canvas);position:sticky;top:0;z-index:10}
-header .row{display:flex;align-items:center;justify-content:space-between}
-header .brand{font-weight:900;letter-spacing:-0.02em;font-size:18px;display:flex;align-items:center;gap:10px}
-header .brand .chip{font-family:'JetBrains Mono',monospace;background:var(--mango);color:var(--canvas);padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-header nav a{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:13px;margin-left:22px}
-header nav a:hover{color:var(--fg)}
-.hero{padding:80px 0 64px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;top:-50%;right:-10%;width:60%;height:160%;background:radial-gradient(ellipse,rgba(255,166,87,0.12),transparent 60%);pointer-events:none}
-.hero h1{font-size:clamp(48px,8vw,96px);font-weight:900;line-height:0.95;letter-spacing:-0.035em;margin-bottom:20px;position:relative}
-.hero h1 .acc{color:var(--mango)}
-.hero h1 .strike{text-decoration:line-through;text-decoration-color:var(--rose);text-decoration-thickness:4px;color:var(--muted)}
-.hero .lede{color:var(--muted);font-size:18px;max-width:560px;margin-bottom:30px;position:relative}
-.cta{display:flex;gap:12px;flex-wrap:wrap;position:relative}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:13px;border:1px solid var(--border);background:var(--surface);color:var(--fg);transition:.15s;font-weight:600}
-.btn:hover{background:var(--surface-2);text-decoration:none}
-.btn.primary{background:var(--mango);color:var(--canvas);border-color:var(--mango);font-weight:700}
-.btn.primary:hover{background:#fff}
-.section{padding:64px 0;border-bottom:1px solid var(--border)}
-.section h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:24px}
-.section h2::before{content:"// ";color:var(--subtle)}
-.json{background:var(--canvas);border:1px solid var(--border);border-radius:8px;padding:24px 28px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2;overflow-x:auto}
-.json .k{color:var(--blue)}
-.json .s{color:var(--lime)}
-.json .n{color:var(--mango)}
-.json .c{color:var(--subtle)}
-.json .punct{color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:22px;position:relative;overflow:hidden}
-.card .price-chip{position:absolute;top:14px;right:14px;background:var(--mango);color:var(--canvas);padding:4px 10px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700}
-.card .name{font-weight:700;font-size:18px;margin-bottom:6px;padding-right:60px}
-.card .desc{color:var(--muted);font-size:13.5px;margin-bottom:12px;min-height:42px}
-.card .tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--lime);text-transform:uppercase;letter-spacing:.06em}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.about p{color:var(--muted);font-size:16.5px;margin-bottom:14px}
-.about p.lead{color:var(--fg);font-size:24px;font-weight:600;line-height:1.3;margin-bottom:18px}
-.about img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;border:1px solid var(--border)}
-.tape{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.t{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:22px}
-.t .text{font-size:16px;line-height:1.55;margin-bottom:14px}
-.t .text::before{content:"\"";color:var(--mango);font-size:42px;line-height:0;position:relative;top:14px;margin-right:4px;font-family:'JetBrains Mono',monospace;font-weight:900}
-.t .who{font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:12px}
-.visit{display:grid;grid-template-columns:1fr 1fr;gap:36px}
-.kv{font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2.05;background:var(--canvas);border:1px solid var(--border);border-radius:8px;padding:22px 26px}
-.kv .k{color:var(--muted)}.kv .v{color:var(--fg)}
-.map{width:100%;height:320px;border:1px solid var(--border);border-radius:8px;filter:invert(0.92) hue-rotate(180deg)}
-footer{padding:42px 0 60px;color:var(--subtle);font-size:13px}
-footer .credit{margin-top:8px;color:var(--muted)}
-@media (max-width:760px){
-  .cards{grid-template-columns:1fr 1fr}
-  .about,.visit,.tape{grid-template-columns:1fr;gap:24px}
+html,body{background:var(--canvas);color:var(--ink);font-family:"Inter",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+.disp{font-family:"Abril Fatface",serif;letter-spacing:-0.005em}
+.hand{font-family:"Caveat",cursive}
+a{color:var(--salsa-2);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
+a:hover{color:var(--ink)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px;position:relative}
+
+/* Papel picado scallop border — repeating triangular cutouts along an edge */
+.scallop-top,.scallop-bot{height:18px;background:radial-gradient(circle at 14px 18px,var(--canvas) 12px,transparent 13px) 0 0/28px 18px repeat-x;background-color:var(--ink)}
+.scallop-bot{transform:scaleY(-1)}
+.papel{height:42px;background:
+  radial-gradient(circle at 14px 0,var(--canvas) 14px,transparent 15px) 0 0/28px 21px repeat-x,
+  radial-gradient(circle at 14px 0,var(--canvas) 10px,transparent 11px) 0 0/28px 21px repeat-x;
+  background-color:var(--salsa)}
+header{background:var(--canvas);padding:18px 0;border-bottom:3px solid var(--ink)}
+header .row{display:flex;align-items:center;justify-content:space-between;gap:24px}
+header .mark{display:flex;align-items:baseline;gap:14px}
+header .mark .a{font-family:"Abril Fatface",serif;font-size:34px;letter-spacing:-0.005em;color:var(--ink);line-height:1;text-transform:uppercase}
+header .mark .b{font-family:"Caveat",cursive;color:var(--salsa);font-size:22px;line-height:1}
+header nav a{margin-left:24px;color:var(--ink);font-size:14px;font-weight:600;text-decoration:none}
+header nav a:hover{color:var(--salsa)}
+header .open{padding:6px 14px;background:var(--ink);color:var(--marigold);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;border-radius:999px}
+
+/* Hero — big bold typography poster */
+.hero{padding:80px 0;border-bottom:3px solid var(--ink);position:relative;overflow:hidden;background:var(--canvas)}
+.hero::before{content:"";position:absolute;top:-160px;right:-160px;width:520px;height:520px;border-radius:50%;background:var(--marigold);opacity:0.7}
+.hero::after{content:"";position:absolute;bottom:-200px;left:-120px;width:460px;height:460px;border-radius:50%;background:var(--marigold-2);opacity:0.55}
+.hero .row{display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center;position:relative;z-index:2}
+.hero h1{font-family:"Abril Fatface",serif;font-size:clamp(60px,9vw,128px);line-height:0.88;letter-spacing:-0.012em;color:var(--ink);margin-bottom:18px;text-transform:uppercase}
+.hero h1 .red{color:var(--salsa)}
+.hero h1 .strike{text-decoration:line-through;text-decoration-color:var(--salsa);text-decoration-thickness:8px;color:var(--cocoa);opacity:0.5}
+.hero .pre{font-family:"Caveat",cursive;font-size:34px;color:var(--salsa);transform:rotate(-2deg);transform-origin:left;line-height:1;margin-bottom:16px;display:inline-block}
+.hero .lede{font-size:18px;color:var(--cocoa);max-width:540px;margin-bottom:32px;font-weight:500}
+.hero .img{position:relative;border:3px solid var(--ink);overflow:hidden;background:var(--ink);transform:rotate(2deg);aspect-ratio:4/5}
+.hero .img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.04)}
+.hero .img .stamp{position:absolute;left:-12px;top:14px;background:var(--salsa);color:var(--cream);padding:8px 14px;font-family:"Abril Fatface",serif;font-size:18px;letter-spacing:.06em;border:3px solid var(--ink);transform:rotate(-4deg);text-transform:uppercase}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;font-size:14px;font-weight:700;letter-spacing:.04em;border:2.5px solid var(--ink);background:var(--cream);color:var(--ink);text-decoration:none;text-transform:uppercase}
+.btn:hover{background:var(--ink);color:var(--marigold)}
+.btn.primary{background:var(--salsa);border-color:var(--ink);color:var(--cream)}
+.btn.primary:hover{background:var(--ink);color:var(--marigold)}
+
+.section{padding:88px 0;border-bottom:3px solid var(--ink)}
+.section.dark{background:var(--cocoa);color:var(--cream);border-bottom-color:var(--marigold)}
+.section.dark a{color:var(--marigold)}
+.section.dark a:hover{color:var(--cream)}
+.section.cream{background:var(--cream)}
+.section .head{margin-bottom:36px}
+.section .h-kicker{font-family:"Caveat",cursive;color:var(--salsa);font-size:30px;line-height:1;margin-bottom:6px}
+.section.dark .h-kicker{color:var(--marigold)}
+.section h2{font-family:"Abril Fatface",serif;font-size:64px;line-height:0.9;letter-spacing:-0.015em;color:var(--ink);text-transform:uppercase;max-width:880px}
+.section.dark h2{color:var(--marigold)}
+.section h2 .underline{box-shadow:inset 0 -10px 0 var(--marigold)}
+.section.dark h2 .underline{box-shadow:inset 0 -10px 0 var(--salsa)}
+
+/* Menu — handbill / poster cards */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--cream);border:3px solid var(--ink);padding:22px 22px 18px;position:relative;display:flex;flex-direction:column;gap:8px}
+.card.feat{background:var(--salsa);color:var(--cream)}
+.card.feat .name,.card.feat .num,.card.feat .desc{color:var(--cream)}
+.card.feat .price{background:var(--marigold);color:var(--ink)}
+.card .num{font-family:"Caveat",cursive;color:var(--salsa);font-size:22px;line-height:1;margin-bottom:4px}
+.card .name{font-family:"Abril Fatface",serif;font-size:26px;line-height:1;text-transform:uppercase;color:var(--ink);letter-spacing:-0.005em}
+.card .desc{font-size:13.5px;color:var(--cocoa);flex:1}
+.card .price{display:inline-flex;align-self:flex-start;padding:5px 12px;background:var(--ink);color:var(--marigold);font-family:"Abril Fatface",serif;font-size:18px;letter-spacing:.04em;text-transform:uppercase}
+.card .tag{position:absolute;right:-10px;top:14px;background:var(--leaf);color:var(--marigold);font-family:"Caveat",cursive;font-size:18px;padding:3px 12px;border:2px solid var(--ink);transform:rotate(8deg)}
+
+/* About */
+.about{display:grid;grid-template-columns:0.95fr 1.05fr;gap:64px;align-items:center}
+.about p{color:var(--cream);font-size:17px;margin-bottom:14px;opacity:0.92}
+.about p.lead{font-family:"Abril Fatface",serif;font-size:36px;line-height:1.05;color:var(--marigold);margin-bottom:20px;text-transform:uppercase;letter-spacing:-0.012em}
+.about p.lead em{font-style:normal;color:var(--salsa)}
+.about figure{position:relative;border:3px solid var(--marigold);background:var(--ink);overflow:hidden;transform:rotate(-2deg);aspect-ratio:1/1}
+.about figure img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.1) contrast(1.05)}
+
+/* Quotes (handbill stickers) */
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.q{background:var(--marigold);border:3px solid var(--ink);padding:22px 24px;position:relative}
+.q:nth-child(odd){transform:rotate(-1deg)}
+.q:nth-child(even){transform:rotate(1deg)}
+.q .text{font-family:"Abril Fatface",serif;font-size:20px;line-height:1.25;color:var(--ink);margin-bottom:12px;letter-spacing:-0.01em}
+.q .who{font-family:"Caveat",cursive;font-size:20px;color:var(--salsa);line-height:1}
+
+/* Visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;border:3px solid var(--ink);background:var(--cream)}
+.visit .info{padding:32px 36px;border-right:3px solid var(--ink)}
+.visit .map{min-height:380px}
+.visit .map iframe{width:100%;height:100%;min-height:380px;border:0;display:block;filter:contrast(1.04) saturate(1.05)}
+.visit h3{font-family:"Abril Fatface",serif;font-size:42px;line-height:0.95;text-transform:uppercase;letter-spacing:-0.005em;margin-bottom:18px;color:var(--ink)}
+.visit h3 em{font-style:normal;color:var(--salsa)}
+.visit .grid{display:grid;grid-template-columns:110px 1fr;row-gap:12px;column-gap:18px;font-size:15.5px;padding:14px 0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);margin-bottom:20px}
+.visit .grid .k{font-family:"Caveat",cursive;font-size:18px;color:var(--salsa);line-height:1.1;align-self:start;padding-top:3px}
+.visit .grid .v{color:var(--ink);font-weight:500}
+
+footer{background:var(--ink);color:var(--marigold);padding:36px 0 56px}
+footer .row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+footer .credit{margin-top:14px;font-family:"Caveat",cursive;color:var(--marigold);font-size:20px;text-transform:none;letter-spacing:0}
+footer .credit a{color:var(--cream)}
+
+@media (max-width:820px){
+  .hero .row{grid-template-columns:1fr}.hero .img{margin-top:14px}
+  .menu-grid{grid-template-columns:1fr 1fr}
+  .about,.quotes,.visit{grid-template-columns:1fr;gap:24px}
+  .visit{display:block}.visit .info{border-right:0;border-bottom:3px solid var(--ink)}
+  .section h2{font-size:40px}
   header nav{display:none}
 }
-@media (max-width:480px){.cards{grid-template-columns:1fr}}
+@media (max-width:520px){.menu-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<div class="papel"></div>
 <header><div class="wrap row">
-  <div class="brand">TACOS CORONEL <span class="chip mono">EST. 2011</span></div>
-  <nav><a href="#menu">menu</a><a href="#about">about</a><a href="#words">words</a><a href="#visit">visit</a></nav>
+  <div class="mark">
+    <span class="a">Tacos Coronel</span><span class="b">Cesar Chavez &amp; Soto</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:18px">
+    <nav><a href="#menu">Menu</a><a href="#story">Story</a><a href="#quotes">Words</a><a href="#visit">Visit</a></nav>
+    <span class="open">Open · trompo lit</span>
+  </div>
 </div></header>
 
-<section class="hero"><div class="wrap">
-  <h1><span class="strike">tacos.</span> <span class="acc">REAL tacos.</span><br>Asada off the plancha.<br>Tortillas off the comal.</h1>
-  <p class="lede">A two-person taquería at the corner of Cesar Chavez and Soto. Mom makes the salsa, Pop runs the grill, my sister and I run the line. Eight tacos, two tortas, three salsas, one rule: nothing precut, nothing premade.</p>
-  <div class="cta">
-    <a class="btn primary" href="tel:+13235550133">📞 (323) 555-0133</a>
-    <a class="btn" href="#menu">view menu →</a>
+<section class="hero"><div class="wrap"><div class="row">
+  <div>
+    <span class="pre hand">Since 2011 · Mom on salsa, Pop on the grill</span>
+    <h1 class="disp"><span class="strike">Tacos.</span><br><span class="red">Real</span> tacos.<br>Off the plancha.</h1>
+    <p class="lede">A two-person taquería at the corner of Cesar Chavez and Soto. Eight tacos, two tortas, three salsas, one rule: nothing precut, nothing premade. Tortillas in-house every two hours.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="tel:+13235550133">Call (323) 555-0133</a>
+      <a class="btn" href="#menu">See the menu</a>
+    </div>
   </div>
+  <div class="img"><img src="https://source.unsplash.com/featured/900x1100/?al-pastor,trompo,taco&sig=51" alt="Al pastor on the trompo"><div class="stamp">Pastor on the trompo</div></div>
+</div></div></section>
+
+<section class="section cream" id="menu"><div class="wrap">
+  <div class="head"><div class="h-kicker hand">— eight tacos, three salsas, one rule</div><h2 class="disp">The <span class="underline">menu</span>.<br>$3.50 each.</h2></div>
+  <div class="menu-grid">
+    <div class="card feat"><div class="num hand">01</div><div class="name disp">Al pastor</div><div class="desc">Marinated overnight, off the trompo, with pineapple. Our signature since day one.</div><div class="price">$3.50</div><div class="tag hand">signature</div></div>
+    <div class="card"><div class="num hand">02</div><div class="name disp">Asada</div><div class="desc">Skirt, salt, lime, plancha-charred. Cilantro &amp; onion.</div><div class="price">$3.50</div></div>
+    <div class="card"><div class="num hand">03</div><div class="name disp">Suadero</div><div class="desc">Slow-braised brisket. Falls apart on contact.</div><div class="price">$3.50</div><div class="tag hand">favorite</div></div>
+    <div class="card"><div class="num hand">04</div><div class="name disp">Carnitas</div><div class="desc">Pork shoulder confit. Crispy edges, soft middle.</div><div class="price">$3.50</div><div class="tag hand">Sundays</div></div>
+    <div class="card"><div class="num hand">05</div><div class="name disp">Pollo</div><div class="desc">Marinated thigh, charcoal grilled, lime crema.</div><div class="price">$3.50</div></div>
+    <div class="card"><div class="num hand">06</div><div class="name disp">Nopales</div><div class="desc">Grilled cactus, queso fresco, salsa verde. Vegetarian.</div><div class="price">$3.50</div></div>
+    <div class="card"><div class="num hand">07</div><div class="name disp">Lengua</div><div class="desc">Tender, citrus-cured, diced fine. Trust us.</div><div class="price">$3.50</div></div>
+    <div class="card"><div class="num hand">08</div><div class="name disp">Birria</div><div class="desc">Slow-stewed beef with consomé on the side.</div><div class="price">$3.50</div><div class="tag hand">Fri–Sun</div></div>
+    <div class="card feat"><div class="num hand">09</div><div class="name disp">Torta</div><div class="desc">Asada or pastor. Telera roll, beans, avocado, jalapeño.</div><div class="price">$9</div><div class="tag hand" style="background:var(--marigold);color:var(--ink)">monster</div></div>
+  </div>
+  <div style="margin-top:24px;text-align:center;font-family:'Caveat',cursive;color:var(--cocoa);font-size:22px;line-height:1.3">salsas — <span style="color:var(--salsa)">roja</span> · <span style="color:var(--leaf)">verde</span> · <span style="color:var(--marigold-2);text-shadow:0 0 0 #000">habanero–piña</span> &nbsp; · &nbsp; tortillas hechas a mano cada dos horas</div>
 </div></section>
 
-<section class="section" id="menu"><div class="wrap">
-  <h2>menu.json</h2>
-  <div class="json mono">
-<span class="punct">{</span><br>
-&nbsp;&nbsp;<span class="k">"tortillas"</span><span class="punct">:</span> <span class="s">"made in-house every two hours"</span><span class="punct">,</span> <span class="c">// corn or flour</span><br>
-&nbsp;&nbsp;<span class="k">"salsas"</span><span class="punct">:</span> <span class="punct">[</span><span class="s">"verde"</span><span class="punct">,</span> <span class="s">"roja"</span><span class="punct">,</span> <span class="s">"habanero-piña"</span><span class="punct">],</span><br>
-&nbsp;&nbsp;<span class="k">"tacos"</span><span class="punct">:</span> <span class="c">// $3.50 each, $9 for three</span><br>
-<span class="punct">}</span>
-  </div>
-  <div class="cards" style="margin-top:24px">
-    <div class="card"><div class="price-chip">$3.50</div><div class="name">Asada</div><div class="desc">Skirt, salt, lime, plancha-charred. Cilantro & onion.</div><div class="tag mono">// signature</div></div>
-    <div class="card"><div class="price-chip">$3.50</div><div class="name">Al pastor</div><div class="desc">Marinated overnight, off the trompo, with pineapple.</div><div class="tag mono">// signature</div></div>
-    <div class="card"><div class="price-chip">$3.50</div><div class="name">Suadero</div><div class="desc">Slow-braised brisket. Falls apart on contact.</div><div class="tag mono">// crowd favorite</div></div>
-    <div class="card"><div class="price-chip">$3.50</div><div class="name">Carnitas</div><div class="desc">Pork shoulder confit. Crispy edges, soft middle.</div><div class="tag mono">// sundays only</div></div>
-    <div class="card"><div class="price-chip">$3.50</div><div class="name">Pollo al carbón</div><div class="desc">Marinated thigh, charcoal grilled, lime crema.</div><div class="tag mono">//</div></div>
-    <div class="card"><div class="price-chip">$3.50</div><div class="name">Nopales</div><div class="desc">Grilled cactus, queso fresco, salsa verde.</div><div class="tag mono">// vegetarian</div></div>
-    <div class="card"><div class="price-chip">$3.50</div><div class="name">Lengua</div><div class="desc">Tender, citrus-cured, diced fine. Trust us.</div><div class="tag mono">//</div></div>
-    <div class="card"><div class="price-chip">$3.50</div><div class="name">Birria</div><div class="desc">Slow-stewed beef with consomé on the side.</div><div class="tag mono">// fri-sun only</div></div>
-    <div class="card"><div class="price-chip">$9</div><div class="name">Torta · asada or pastor</div><div class="desc">Telera roll, refried beans, avocado, pickled jalapeño.</div><div class="tag mono">// monster</div></div>
-  </div>
-</div></section>
-
-<section class="section" id="about"><div class="wrap">
-  <h2>about</h2>
+<section class="section dark" id="story"><div class="wrap">
+  <div class="head"><div class="h-kicker hand">— how this corner happened</div><h2 class="disp">A corner stand,<br><span class="underline">$4,200</span>, and zero shortcuts.</h2></div>
   <div class="about">
     <div>
-      <p class="lead">Pop bought this corner stand for $4,200 in 2011. We've added one chair and zero shortcuts since.</p>
-      <p>Our masa is from Tamoa in Mexico City. We grind salsas in a molcajete, not a blender. The trompo runs from 11 to whenever the pastor is gone — usually 7pm on weekdays, 9 on Saturdays.</p>
-      <p>No app, no delivery, no DoorDash. You come, you order at the window, you eat at the standing counter or take it home. That's it.</p>
+      <p class="lead">Pop bought this corner for $4,200 in 2011. We've added <em>one chair</em> and zero shortcuts since.</p>
+      <p>Our masa is from Tamoa in Mexico City. We grind salsas in a molcajete, not a blender. The trompo runs from 11 to whenever the pastor's gone — usually 7pm on weekdays, 9 on Saturdays.</p>
+      <p>No app, no delivery, no DoorDash. You come, you order at the window, you eat at the standing counter or you take it home. That's it.</p>
     </div>
-    <img src="https://source.unsplash.com/700x700/?taco-pastor,trompo" alt="Pastor on the trompo">
+    <figure><img src="https://source.unsplash.com/featured/900x900/?street-tacos,taqueria&sig=52" alt="Street tacos"></figure>
   </div>
 </div></section>
 
-<section class="section" id="words"><div class="wrap">
-  <h2>what the line says</h2>
-  <div class="tape">
-    <div class="t"><div class="text">Best al pastor in East LA, and I will fight someone about it. The pineapple actually gets caramelized — that's the tell.</div><div class="who mono">— Ricardo H.</div></div>
-    <div class="t"><div class="text">Stood in a 20-minute line at 1pm on a Tuesday. Worth every minute. The suadero taco is the move.</div><div class="who mono">— Stephanie K.</div></div>
-    <div class="t"><div class="text">Three salsas, all banger, all different. The habanero-piña is sneaky hot — start small.</div><div class="who mono">— Daniel V.</div></div>
-    <div class="t"><div class="text">Six tacos and a torta for under twenty bucks. In 2026, in LA. They earned my Sunday-morning loyalty.</div><div class="who mono">— Mayra A.</div></div>
+<section class="section" id="quotes" style="background:var(--marigold)"><div class="wrap">
+  <div class="head"><div class="h-kicker hand">— what the line says</div><h2 class="disp">Words from <span class="underline">the window</span>.</h2></div>
+  <div class="quotes">
+    <div class="q"><p class="text disp">"Best al pastor in East LA, and I will fight someone about it. The pineapple actually gets caramelized — that's the tell."</p><div class="who hand">— Ricardo H.</div></div>
+    <div class="q"><p class="text disp">"Twenty-minute line at 1pm on a Tuesday. Worth every minute. The suadero is the move."</p><div class="who hand">— Stephanie K.</div></div>
+    <div class="q"><p class="text disp">"Three salsas, all banger, all different. The habanero–piña is sneaky hot — start small."</p><div class="who hand">— Daniel V.</div></div>
+    <div class="q"><p class="text disp">"Six tacos and a torta for under twenty bucks. In 2026, in LA. Sunday-morning loyalty earned."</p><div class="who hand">— Mayra A.</div></div>
   </div>
 </div></section>
 
-<section class="section" id="visit"><div class="wrap">
-  <h2>visit</h2>
+<section class="section cream" id="visit"><div class="wrap">
+  <div class="head"><div class="h-kicker hand">— come hungry</div><h2 class="disp">Find <span class="underline">the corner</span>.</h2></div>
   <div class="visit">
-    <div>
-      <div class="kv">
-<span class="k">phone&nbsp;&nbsp;&nbsp;</span> <a class="v" href="tel:+13235550133">(323) 555-0133</a><br>
-<span class="k">address&nbsp;</span> <span class="v">3412 Cesar Chavez Ave,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles, CA 90063</span><br>
-<br>
-<span class="k">mon-thu&nbsp;</span> <span class="v">11:00 – 21:00</span><br>
-<span class="k">fri-sat&nbsp;</span> <span class="v">11:00 – 23:00</span><br>
-<span class="k">sunday&nbsp;&nbsp;</span> <span class="v">10:00 – 18:00</span><br>
-<br>
-<span class="k">cash&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="v">preferred (ATM on-site)</span>
+    <div class="info">
+      <h3 class="disp">Tacos <em>Coronel</em></h3>
+      <div class="grid">
+        <span class="k">Phone</span><span class="v"><a href="tel:+13235550133">(323) 555-0133</a></span>
+        <span class="k">Address</span><span class="v">3412 Cesar Chavez Ave<br>Los Angeles, CA 90063</span>
+        <span class="k">Mon – Thu</span><span class="v">11:00am — 9:00pm</span>
+        <span class="k">Fri &amp; Sat</span><span class="v">11:00am — 11:00pm</span>
+        <span class="k">Sunday</span><span class="v">10:00am — 6:00pm</span>
+        <span class="k">Cash</span><span class="v">Preferred (ATM on-site)</span>
       </div>
-      <div style="margin-top:20px"><a class="btn primary" href="tel:+13235550133">📞 (323) 555-0133</a></div>
+      <a class="btn primary" href="tel:+13235550133">Call (323) 555-0133</a>
     </div>
-    <iframe class="map" loading="lazy" src="https://www.google.com/maps?q=Cesar+Chavez+Ave+Los+Angeles+CA&output=embed"></iframe>
+    <div class="map"><iframe loading="lazy" src="https://www.google.com/maps?q=Cesar+Chavez+Ave+East+Los+Angeles+CA&output=embed"></iframe></div>
   </div>
 </div></section>
 
 <footer><div class="wrap">
-  <div class="mono" style="color:var(--muted)">// dummy mockup — not a real business</div>
-  <div class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:jcpeng2002@gmail.com">jcpeng2002@gmail.com</a></div>
+  <div class="row"><span>© 2026 Tacos Coronel · East LA</span><span>Mom · Pop · Daughter · Son · since 2011</span></div>
+  <div class="credit">Mockup designed by LJ Sites — make this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></div>
 </div></footer>
+<div class="papel"></div>
 </body></html>
