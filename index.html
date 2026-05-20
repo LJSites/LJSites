@@ -318,8 +318,8 @@ footer .credit a{color:var(--accent-text)}
     <a class="btn" href="#pinned">See recent work</a>
   </div>
   <div class="stat-strip">
-    <div class="s"><div class="v serif"><em>25+</em></div><div class="k">Sites shipped</div></div>
-    <div class="s"><div class="v serif">~3 <em>days</em></div><div class="k">Discover &rarr; live</div></div>
+    <div class="s"><div class="v serif"><em><span class="count" data-target="25" data-suffix="+">25+</span></em></div><div class="k">Sites shipped</div></div>
+    <div class="s"><div class="v serif"><span class="count" data-prefix="~" data-target="3">~3</span> <em>days</em></div><div class="k">Discover &rarr; live</div></div>
     <div class="s"><div class="v serif"><em>Free</em></div><div class="k">Cost to look</div></div>
     <div class="s"><div class="v serif">CA</div><div class="k">Statewide</div></div>
   </div>
@@ -668,6 +668,32 @@ footer .credit a{color:var(--accent-text)}
     feats.forEach(function(f){
       f.style.display = (tag === 'all' || f.dataset.tag === tag) ? '' : 'none';
     });
+  });
+})();
+
+// Count-up for the hero stat strip (Sites shipped + Discover→live).
+// Falls back to the static final value when JS is off or prefers-reduced-motion is set.
+(function(){
+  var els = document.querySelectorAll('.stat-strip .count');
+  if (!els.length) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function run(el){
+    var target = +el.dataset.target;
+    var prefix = el.dataset.prefix || '';
+    var suffix = el.dataset.suffix || '';
+    var dur = 1400, start = performance.now();
+    el.textContent = prefix + '0' + suffix;
+    function tick(now){
+      var t = Math.min(1, (now - start) / dur);
+      var eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+      el.textContent = prefix + Math.round(eased * target) + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  // small stagger so the two numbers don't tick in lock-step
+  Array.prototype.forEach.call(els, function(el, i){
+    setTimeout(function(){ run(el); }, 240 + i * 180);
   });
 })();
 </script>
