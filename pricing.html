@@ -1,0 +1,391 @@
+<!doctype html>
+<!-- LJ Sites pricing page — matches the refined editorial design of the homepage.
+     Brand palette pulled from the logo: ink-navy, paper canvas, single blue-accent.
+     Two-tier structure: front-end (priced openly) vs back-end (priced on conversation). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pricing — LJ Sites</title>
+<meta name="description" content="Front-end sites from $1,000 setup + $200/month. Back-end builds priced after a scoping conversation. Pasadena, CA.">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0f1f47;--navy-2:#091638;--navy-3:#1b2e62;
+  --paper:#f5f1ea;--paper-2:#ece6da;--canvas:#fbf8f2;--cream:#fff;
+  --ink:#0f1f47;--ink-2:#1f2a4a;--muted:#6c7591;--subtle:#94a0b4;
+  --blue:#3b82f6;--blue-2:#1d4ed8;--blue-3:#dbeafe;
+  --rule:#dcd5c4;--rule-2:#c2bbab;
+  --gold:#b8702a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--canvas);color:var(--ink);font-family:"Inter",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.serif{font-family:"Fraunces",Georgia,serif}.tight{font-family:"Inter Tight",sans-serif;letter-spacing:-0.02em}
+a{color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;text-decoration-color:var(--rule-2);transition:.2s}
+a:hover{text-decoration-color:var(--blue)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+img{max-width:100%;display:block}
+
+/* Nav (identical to homepage) */
+header.nav{padding:22px 0;border-bottom:1px solid var(--rule);background:var(--canvas);position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%)}
+header.nav .row{display:flex;align-items:center;justify-content:space-between;gap:32px}
+header.nav .brand{display:inline-flex;align-items:center;gap:14px;text-decoration:none}
+header.nav .brand .logo{width:44px;height:44px;border-radius:8px;flex:0 0 44px}
+header.nav .brand .word{display:flex;flex-direction:column;line-height:1.05}
+header.nav .brand .word .a{font-family:"Fraunces",serif;font-weight:600;font-size:20px;color:var(--ink);letter-spacing:-0.01em}
+header.nav .brand .word .a .dot{color:var(--blue)}
+header.nav .brand .word .b{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+header.nav nav{display:flex;gap:30px;align-items:center}
+header.nav nav a{font-size:14px;color:var(--ink-2);text-decoration:none;font-weight:500}
+header.nav nav a.current{color:var(--blue-2)}
+header.nav nav a:hover{color:var(--blue)}
+header.nav .cta{padding:9px 18px;background:var(--navy);color:var(--cream);font-size:13px;font-weight:600;border-radius:999px;text-decoration:none;letter-spacing:.01em;transition:.2s}
+header.nav .cta:hover{background:var(--blue);color:#fff}
+header.nav .cta .arrow{display:inline-block;margin-left:6px;transition:.2s}
+header.nav .cta:hover .arrow{transform:translateX(3px)}
+
+/* Hero */
+.hero{padding:104px 0 72px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-200px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,var(--blue-3) 0%,transparent 60%);opacity:0.7;pointer-events:none}
+.hero .kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:28px;display:inline-flex;align-items:center;gap:12px}
+.hero .kicker .ln{width:36px;height:1px;background:var(--blue)}
+.hero h1{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(54px,8vw,100px);line-height:0.98;letter-spacing:-0.03em;color:var(--ink);margin-bottom:32px;max-width:980px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--blue-2)}
+.hero h1 .quiet{color:var(--muted);font-weight:400}
+.hero .lede{font-size:19px;color:var(--ink-2);max-width:680px;line-height:1.6}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.005em;text-decoration:none;border:1.5px solid var(--ink);background:transparent;color:var(--ink);transition:.2s;cursor:pointer}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:var(--cream)}
+.btn.primary:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.ghost{border-color:var(--rule-2);color:var(--ink)}
+.btn.ghost:hover{background:var(--paper);color:var(--ink);border-color:var(--ink)}
+.btn .arrow{display:inline-block;transition:.2s}
+.btn:hover .arrow{transform:translateX(3px)}
+
+/* Section base (matches homepage) */
+.section{padding:104px 0;border-top:1px solid var(--rule)}
+.section.dark{background:var(--navy);color:var(--paper);border-top-color:transparent}
+.section.dark a{color:var(--paper);text-decoration-color:rgba(255,255,255,0.2)}
+.section.dark a:hover{text-decoration-color:var(--blue)}
+.section .head{margin-bottom:56px;display:grid;grid-template-columns:200px 1fr;gap:64px;align-items:start}
+.section .head .num{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--blue-2);font-weight:600;padding-top:18px}
+.section.dark .head .num{color:var(--blue)}
+.section .head .num::after{content:"";display:block;width:42px;height:1px;background:currentColor;margin-top:10px;opacity:.8}
+.section h2{font-family:"Fraunces",serif;font-weight:500;font-size:54px;line-height:1.0;letter-spacing:-0.026em;color:var(--ink);max-width:780px}
+.section.dark h2{color:var(--paper)}
+.section h2 em{font-style:italic;color:var(--blue-2);font-weight:400}
+.section.dark h2 em{color:var(--blue)}
+.section .blurb{margin-top:18px;color:var(--ink-2);font-size:17px;max-width:620px}
+.section.dark .blurb{color:var(--paper);opacity:.85}
+
+/* Plan cards — the heart of the page */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+.plan{background:var(--cream);border:1px solid var(--rule);border-radius:18px;padding:42px 44px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.plan.dark{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.plan.dark .lede,.plan.dark .feat .l{color:var(--paper)}
+.plan.dark .feat .l{opacity:.92}
+.plan .tag{position:absolute;top:22px;right:22px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--blue-2);padding:5px 12px;background:var(--blue-3);border-radius:999px}
+.plan.dark .tag{background:rgba(59,130,246,0.18);color:var(--blue)}
+.plan .step{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:14px}
+.plan.dark .step{color:var(--blue);opacity:1}
+.plan h3{font-family:"Fraunces",serif;font-weight:500;font-size:42px;line-height:1.0;letter-spacing:-0.022em;color:var(--ink);margin-bottom:6px}
+.plan.dark h3{color:var(--paper)}
+.plan h3 em{font-style:italic;color:var(--blue-2);font-weight:400}
+.plan.dark h3 em{color:var(--blue)}
+.plan .sub{font-family:"Fraunces",serif;font-style:italic;font-size:20px;color:var(--blue-2);margin-bottom:32px;font-weight:400;letter-spacing:-0.005em}
+.plan.dark .sub{color:var(--blue)}
+.plan .price{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-bottom:28px;border-bottom:1px solid var(--rule);margin-bottom:28px}
+.plan.dark .price{border-bottom-color:rgba(255,255,255,0.16)}
+.plan .price .big{font-family:"Fraunces",serif;font-weight:500;font-size:62px;line-height:1.0;letter-spacing:-0.035em;color:var(--ink)}
+.plan.dark .price .big{color:var(--paper)}
+.plan .price .big .currency{font-size:32px;vertical-align:0.45em;color:var(--muted);font-weight:400;margin-right:2px;letter-spacing:0}
+.plan.dark .price .big .currency{color:var(--blue)}
+.plan .price .unit{font-size:14px;color:var(--muted);font-weight:500;line-height:1.35;text-transform:uppercase;letter-spacing:.06em}
+.plan.dark .price .unit{color:var(--paper);opacity:.7}
+.plan .price .plus{font-family:"Fraunces",serif;font-style:italic;font-size:32px;font-weight:400;color:var(--blue-2);line-height:1}
+.plan.dark .price .plus{color:var(--blue)}
+.plan .price .small{font-family:"Fraunces",serif;font-weight:500;font-size:36px;line-height:1;color:var(--ink);letter-spacing:-0.02em}
+.plan.dark .price .small{color:var(--paper)}
+.plan .price-note{font-size:13.5px;color:var(--muted);margin-bottom:32px;line-height:1.5}
+.plan.dark .price-note{color:var(--paper);opacity:.7}
+.plan .feat{flex:1;list-style:none;padding:0;margin:0 0 32px}
+.plan .feat li{display:grid;grid-template-columns:22px 1fr;gap:14px;padding:11px 0;border-bottom:1px dotted var(--rule);font-size:14.5px;color:var(--ink-2);align-items:start}
+.plan.dark .feat li{border-bottom-color:rgba(255,255,255,0.12);color:var(--paper);opacity:.92}
+.plan .feat li:last-child{border-bottom:0}
+.plan .feat li .c{color:var(--blue-2);font-weight:700;line-height:1.5;font-size:14px}
+.plan.dark .feat li .c{color:var(--blue)}
+.plan .feat li .l b{color:var(--ink);font-weight:600}
+.plan.dark .feat li .l b{color:var(--paper);font-weight:600}
+.plan .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.plan .footnote{margin-top:18px;font-size:12.5px;color:var(--muted);font-style:italic;font-family:"Fraunces",serif}
+.plan.dark .footnote{color:var(--paper);opacity:.6}
+
+/* "Endless possibilities" grid for back-end */
+.poss{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,0.16);border-left:1px solid rgba(255,255,255,0.16);border-radius:14px;overflow:hidden;background:rgba(255,255,255,0.02)}
+.poss .p{padding:26px 26px;border-right:1px solid rgba(255,255,255,0.14);border-bottom:1px solid rgba(255,255,255,0.14);display:flex;flex-direction:column;gap:8px}
+.poss .p .num{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);font-weight:600}
+.poss .p h4{font-family:"Fraunces",serif;font-weight:500;font-size:21px;line-height:1.15;letter-spacing:-0.012em;color:var(--paper)}
+.poss .p h4 em{font-style:italic;color:var(--blue)}
+.poss .p p{font-size:13.5px;line-height:1.5;color:var(--paper);opacity:.78}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+.faq details{border-bottom:1px solid var(--rule);padding:22px 0;cursor:pointer}
+.faq details[open]{padding-bottom:24px}
+.faq summary{font-family:"Fraunces",serif;font-weight:500;font-size:21px;letter-spacing:-0.014em;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:18px;line-height:1.25}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:"Inter Tight",sans-serif;font-weight:400;font-size:28px;color:var(--blue-2);line-height:0.85;flex-shrink:0;transition:.2s}
+.faq details[open] summary::after{content:"–"}
+.faq summary em{font-style:italic;color:var(--blue-2)}
+.faq .a{padding-top:14px;color:var(--ink-2);font-size:16px;line-height:1.65;max-width:520px}
+
+/* Final CTA strip */
+.final{padding:96px 0;background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);text-align:center}
+.final h2{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(40px,5vw,64px);line-height:1.05;letter-spacing:-0.022em;color:var(--ink);max-width:780px;margin:0 auto 22px}
+.final h2 em{font-style:italic;color:var(--blue-2)}
+.final p{color:var(--ink-2);font-size:17px;max-width:560px;margin:0 auto 36px}
+.final .cta-row{display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+/* Footer (identical to homepage) */
+footer{padding:48px 0 72px;background:var(--navy);color:var(--paper)}
+footer .row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+footer .brand{display:inline-flex;align-items:center;gap:14px}
+footer .brand img{width:42px;height:42px;border-radius:8px}
+footer .brand .a{font-family:"Fraunces",serif;font-weight:500;font-size:18px;color:var(--paper);letter-spacing:-0.01em}
+footer .brand .dot{color:var(--blue)}
+footer .links{display:flex;gap:24px;font-size:13px;letter-spacing:.04em;flex-wrap:wrap}
+footer .links a{color:var(--paper);opacity:.85;text-decoration:none}
+footer .links a:hover{color:var(--blue);opacity:1}
+footer .credit{margin-top:22px;font-size:13px;color:var(--paper);opacity:.65;border-top:1px solid rgba(255,255,255,0.12);padding-top:18px}
+footer .credit a{color:var(--blue);text-decoration:none}
+
+@media (max-width:980px){
+  .section .head{grid-template-columns:1fr;gap:14px}
+  .plans{grid-template-columns:1fr;gap:22px}
+  .poss{grid-template-columns:1fr 1fr}
+  .faq{grid-template-columns:1fr;gap:0}
+  .section h2{font-size:38px}
+  .plan h3{font-size:34px}
+}
+@media (max-width:620px){
+  header.nav nav a:not(.cta){display:none}
+  .poss{grid-template-columns:1fr}
+  .section{padding:64px 0}
+  .plan{padding:32px 28px}
+  .plan .price .big{font-size:48px}
+  .hero{padding:56px 0 48px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap row">
+  <a class="brand" href="index.html">
+    <img class="logo" src="logo.svg" alt="LJ Sites">
+    <span class="word">
+      <span class="a serif">LJ Sites<span class="dot">.</span></span>
+      <span class="b">Pasadena · Greater LA</span>
+    </span>
+  </a>
+  <nav>
+    <a href="index.html#how">How it works</a>
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a class="current" href="pricing.html">Pricing</a>
+    <a class="cta" href="index.html#contact">Get in touch <span class="arrow">→</span></a>
+  </nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="kicker"><span class="ln"></span>Pricing · Updated 2026</div>
+  <h1 class="serif">Plain pricing on <em>the front.</em><br><span class="quiet">A conversation on the rest.</span></h1>
+  <p class="lede">We keep our pricing honest where we can: one number for the front-end work that most small businesses actually need. For everything that has to <em>do</em> something — online ordering, reservations, accounts, payments — we sit down with you first and price what you'll actually use. No platform fees, no hidden retainers.</p>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="head">
+    <div class="num">§ 01 · Two ways to start</div>
+    <div>
+      <h2 class="serif">Front end is priced. <em>Back end is scoped.</em></h2>
+      <p class="blurb">A working storefront site, every essential feature, and a number you can sign off on today. Or, if your business needs more, a conversation to scope it carefully so you only pay for the functionality you'll really use.</p>
+    </div>
+  </div>
+
+  <div class="plans">
+
+    <!-- FRONT-END PLAN -->
+    <div class="plan">
+      <div class="tag">Most popular</div>
+      <div class="step">Plan 01 · Front-end site</div>
+      <h3 class="serif">A storefront <em>that earns its keep.</em></h3>
+      <div class="sub">Designed, built, hosted, and looked after.</div>
+
+      <div class="price">
+        <span class="big serif"><span class="currency">$</span>1,000</span>
+        <span class="unit">one-time<br>setup</span>
+        <span class="plus serif">+</span>
+        <span class="small serif"><span class="currency" style="font-size:22px;vertical-align:0.6em;color:var(--muted);font-weight:400">$</span>200</span>
+        <span class="unit">per month<br>care &amp; hosting</span>
+      </div>
+      <div class="price-note">Includes everything a small business actually needs to look as good online as they do in person. Cancel any month — the site is yours either way.</div>
+
+      <ul class="feat">
+        <li><span class="c">✓</span><span class="l"><b>Hand-tuned single-page design.</b> Picked archetype, real typography, real photos. Never a template.</span></li>
+        <li><span class="c">✓</span><span class="l"><b>Mobile-first responsive.</b> Looks correct on every phone, tablet, and big screen.</span></li>
+        <li><span class="c">✓</span><span class="l"><b>Working contact form.</b> Submissions forwarded to your email — no spam, no plugins to babysit.</span></li>
+        <li><span class="c">✓</span><span class="l"><b>Embedded Google Map.</b> One-tap directions, accurate pin, branded styling.</span></li>
+        <li><span class="c">✓</span><span class="l"><b>Click-to-call &amp; click-to-text.</b> Big phone button on every screen size.</span></li>
+        <li><span class="c">✓</span><span class="l"><b>Photo gallery / lightbox.</b> Show off the space, the food, the work. Up to 24 images.</span></li>
+        <li><span class="c">✓</span><span class="l"><b>SEO + social meta.</b> Open Graph cards so links shared on Instagram and iMessage look polished.</span></li>
+        <li><span class="c">✓</span><span class="l"><b>Hosting, SSL, and CDN.</b> Fast worldwide, HTTPS out of the box, zero downtime.</span></li>
+        <li><span class="c">✓</span><span class="l"><b>Custom domain.</b> Bring your <code style="font-family:'Inter Tight',monospace;background:var(--paper-2);padding:1px 5px;border-radius:3px;font-size:12.5px">.com</code>, we wire it for you.</span></li>
+        <li><span class="c">✓</span><span class="l"><b>Analytics dashboard.</b> Plain English — who visited, what they clicked, where they came from.</span></li>
+        <li><span class="c">✓</span><span class="l"><b>Monthly content updates.</b> Hours change, new menu item, fresh photo — send us an email, we ship it the same day.</span></li>
+        <li><span class="c">✓</span><span class="l"><b>Quarterly content refresh.</b> Once a quarter we sit down with you and tune the copy.</span></li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn primary" href="index.html#contact">Start a conversation <span class="arrow">→</span></a>
+        <a class="btn ghost" href="index.html#work">See examples</a>
+      </div>
+      <div class="footnote">Most front-end sites are live within a week.</div>
+    </div>
+
+    <!-- BACK-END PLAN -->
+    <div class="plan dark">
+      <div class="tag">By scoping</div>
+      <div class="step">Plan 02 · Back-end build</div>
+      <h3 class="serif">When the site needs <em>to do work.</em></h3>
+      <div class="sub">Quoted after we understand what it has to do.</div>
+
+      <div class="price">
+        <span class="big serif" style="font-size:46px;letter-spacing:-0.02em">From conversation,</span>
+        <span class="plus serif">not</span>
+        <span class="small serif" style="font-size:32px">a calculator.</span>
+      </div>
+      <div class="price-note">We don't quote back-end work off a brochure — because nobody actually needs the same set of features. Tell us what your business should be able to do; we'll come back with a fixed quote that prices only what you'll really use.</div>
+
+      <ul class="feat">
+        <li><span class="c">›</span><span class="l"><b>Online ordering &amp; e-commerce.</b> From a single-product checkout to a full menu with modifiers and pickup windows.</span></li>
+        <li><span class="c">›</span><span class="l"><b>Reservations &amp; bookings.</b> Calendar, real-time availability, deposits, automated reminders.</span></li>
+        <li><span class="c">›</span><span class="l"><b>Customer accounts &amp; loyalty.</b> Profiles, order history, points, gift cards, referrals.</span></li>
+        <li><span class="c">›</span><span class="l"><b>Payments.</b> Stripe, Square, Apple Pay, ACH — wired carefully, audited for PCI.</span></li>
+        <li><span class="c">›</span><span class="l"><b>CMS you can actually use.</b> Edit your own site without calling us. Optional.</span></li>
+        <li><span class="c">›</span><span class="l"><b>Inventory &amp; multi-location.</b> Stock-aware listings, location-specific menus, branch hours.</span></li>
+        <li><span class="c">›</span><span class="l"><b>Email automation &amp; SMS.</b> Receipts, drip sequences, win-back, abandoned-cart, Mailchimp / ConvertKit, Twilio.</span></li>
+        <li><span class="c">›</span><span class="l"><b>Custom dashboards.</b> See exactly what you want to see, the way you want to see it.</span></li>
+        <li><span class="c">›</span><span class="l"><b>POS &amp; third-party integration.</b> Square, Toast, Lightspeed, QuickBooks, Google Calendar, Slack.</span></li>
+        <li><span class="c">›</span><span class="l"><b>API work &amp; automations.</b> Tie the parts of your business together — once, properly.</span></li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn primary" href="index.html#contact" style="background:var(--blue);border-color:var(--blue)">Book a scoping call <span class="arrow">→</span></a>
+        <a class="btn" href="#possibilities" style="border-color:var(--paper);color:var(--paper)">See what's possible</a>
+      </div>
+      <div class="footnote">Most back-end projects ship in 4 – 10 weeks.</div>
+    </div>
+
+  </div>
+</div></section>
+
+<section class="section dark" id="possibilities"><div class="wrap">
+  <div class="head">
+    <div class="num">§ 02 · Possibilities are endless</div>
+    <div>
+      <h2 class="serif">If you can describe it,<br><em>we can probably build it.</em></h2>
+      <p class="blurb">A non-exhaustive menu of what back-end work has looked like for clients we've worked with. Mix anything from this list, add things that aren't on it — we'll scope it and quote it as one job.</p>
+    </div>
+  </div>
+
+  <div class="poss">
+    <div class="p"><div class="num">01</div><h4 class="serif">Online <em>ordering</em></h4><p>Pickup, delivery, modifiers, tipping, time-windowed checkout. Built for the way your kitchen actually runs.</p></div>
+    <div class="p"><div class="num">02</div><h4 class="serif">Reservations &amp; <em>bookings</em></h4><p>Calendar, real-time slots, deposit holds, SMS reminders, no-show policies that actually fire.</p></div>
+    <div class="p"><div class="num">03</div><h4 class="serif">Customer <em>accounts</em></h4><p>Profiles, saved cards, order history, addresses, loyalty points, referral links.</p></div>
+    <div class="p"><div class="num">04</div><h4 class="serif">Payments &amp; <em>checkout</em></h4><p>Stripe, Square, Apple Pay, ACH, deposits, partial refunds, subscriptions, gift cards.</p></div>
+    <div class="p"><div class="num">05</div><h4 class="serif">CMS &amp; <em>editing</em></h4><p>Edit copy, swap photos, change hours, add menu items — without calling us.</p></div>
+    <div class="p"><div class="num">06</div><h4 class="serif">Inventory &amp; <em>multi-location</em></h4><p>Stock-aware listings, location-specific menus and hours, central admin.</p></div>
+    <div class="p"><div class="num">07</div><h4 class="serif">Email, SMS &amp; <em>automations</em></h4><p>Receipts, abandoned cart, drip sequences, win-back, birthday offers. Mailchimp, ConvertKit, Twilio.</p></div>
+    <div class="p"><div class="num">08</div><h4 class="serif">Dashboards &amp; <em>reporting</em></h4><p>Whatever number you check every morning — make it the first thing on the screen.</p></div>
+    <div class="p"><div class="num">09</div><h4 class="serif">POS &amp; <em>integrations</em></h4><p>Square, Toast, Lightspeed, QuickBooks, Google Calendar, Slack — wired once, properly.</p></div>
+    <div class="p"><div class="num">10</div><h4 class="serif">Member &amp; <em>private areas</em></h4><p>Gated content, subscriptions, paywalls, role-based access for staff or wholesale.</p></div>
+    <div class="p"><div class="num">11</div><h4 class="serif">Reviews &amp; <em>social proof</em></h4><p>Pull from Google &amp; Yelp, moderate, and re-display on your own terms.</p></div>
+    <div class="p"><div class="num">12</div><h4 class="serif">Something <em>not on this list</em></h4><p>Tell us what your business should be able to do. We've yet to be asked something we can't build.</p></div>
+  </div>
+
+  <div style="margin-top:40px;text-align:center">
+    <a class="btn primary" href="index.html#contact" style="background:var(--blue);border-color:var(--blue)">Book a scoping call <span class="arrow">→</span></a>
+  </div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="head">
+    <div class="num">§ 03 · Questions worth asking</div>
+    <div>
+      <h2 class="serif">The fine print, <em>up front.</em></h2>
+      <p class="blurb">Common questions before signing on. If yours isn't here, email us — we'll add it.</p>
+    </div>
+  </div>
+  <div class="faq">
+    <div>
+      <details>
+        <summary class="serif">Why isn't the back-end <em>priced openly?</em></summary>
+        <div class="a">Because every back-end project is different. One restaurant needs online ordering and reservations. Another needs a loyalty program and gift cards. Pricing back-end work off a brochure means you either over-pay for things you don't use, or under-quote and end up cutting corners. We'd rather have a 30-minute call, scope it carefully, and send you a fixed quote.</div>
+      </details>
+      <details>
+        <summary class="serif">Is there a <em>contract or commitment?</em></summary>
+        <div class="a">No long-term contract. The front-end monthly is month-to-month — cancel any month and the site is still yours. Back-end projects are fixed-fee, paid in milestones. We don't have lock-ins.</div>
+      </details>
+      <details>
+        <summary class="serif">What does the $200 <em>monthly cover?</em></summary>
+        <div class="a">Hosting on a fast CDN, SSL, your custom domain, monthly content updates (hours, photos, copy, new menu items), analytics, the contact form, security patches, and us being on call. No hourly meter, no nickel-and-diming.</div>
+      </details>
+      <details>
+        <summary class="serif">Can I start front-end and <em>add back-end later?</em></summary>
+        <div class="a">That's how most of our long-running projects start. Get the front-end live first, learn what your customers actually do, then we build the back-end functionality that addresses what you saw. No need to figure it all out up front.</div>
+      </details>
+    </div>
+    <div>
+      <details>
+        <summary class="serif">What if I just want the <em>site, no monthly?</em></summary>
+        <div class="a">Possible. We can hand you the HTML file, set up a domain, and walk away. The site is yours — we just won't be available for the monthly updates, the analytics dashboards, or the on-call support. Price is the same one-time setup fee.</div>
+      </details>
+      <details>
+        <summary class="serif">Do you do <em>e-commerce</em>?</summary>
+        <div class="a">Yes — that falls under the back-end plan. From a simple Stripe checkout for one product to a full catalog with inventory, variants, shipping, and abandoned-cart automation. Scoped to fit how your business actually sells.</div>
+      </details>
+      <details>
+        <summary class="serif">How quickly do <em>updates land?</em></summary>
+        <div class="a">Small content edits (hours, copy, swap a photo) usually ship the same business day. Bigger changes (new section, new design element) typically within the week. Back-end changes follow whatever release schedule we agree on at scoping.</div>
+      </details>
+      <details>
+        <summary class="serif">What if I'm <em>not in LA?</em></summary>
+        <div class="a">We're set up for the Greater LA area but we've taken on a handful of remote projects. If you're farther away, email us and we'll tell you honestly whether it's a good fit.</div>
+      </details>
+    </div>
+  </div>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2 class="serif">Two ways to start. <em>One studio.</em></h2>
+  <p>Whether you're ready to sign off on the front-end today or you have a back-end build to scope, the next step is the same — one email, one sentence about your business, one reply within a day.</p>
+  <div class="cta-row">
+    <a class="btn primary" href="index.html#contact">Start a conversation <span class="arrow">→</span></a>
+    <a class="btn ghost" href="mailto:LJsites.llc@gmail.com">Email LJsites.llc@gmail.com</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="row">
+    <div class="brand">
+      <img src="logo.svg" alt="LJ Sites">
+      <span class="a serif">LJ Sites<span class="dot">.</span></span>
+    </div>
+    <div class="links"><a href="index.html#how">How it works</a><a href="index.html#work">Work</a><a href="index.html#about">About</a><a href="pricing.html">Pricing</a><a href="index.html#contact">Contact</a><a href="mailto:LJsites.llc@gmail.com">Email</a></div>
+  </div>
+  <div class="credit">© 2026 LJ Sites · Pasadena, CA · Reach us at <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>. Front-end pricing shown is for a single-page site delivered as one HTML file. Back-end pricing is fixed-fee, scoped to your business.</div>
+</div></footer>
+
+</body></html>
