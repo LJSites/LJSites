@@ -1,0 +1,157 @@
+<!doctype html>
+<!-- Archetype: industrial spec-sheet. Monospace dominant; capabilities as a data table; precision tolerances as the hero hook. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pacific CNC Works — Precision Machining, Vernon CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d1117;--canvas:#010409;--surface:#161b22;--surface-2:#21262d;--border:#30363d;--fg:#e6edf3;--muted:#8b949e;--subtle:#6e7681;--accent:#58a6ff;--green:#7ee787;--warn:#ffa657;--danger:#f85149}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.mono,code,kbd{font-family:'JetBrains Mono',ui-monospace,monospace}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+header.nav{border-bottom:1px solid var(--border);background:var(--canvas);position:sticky;top:0;z-index:10}
+header.nav .row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;font-size:14px}
+header.nav .brand{display:flex;align-items:center;gap:10px;font-weight:600}
+header.nav .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+header.nav nav a{color:var(--muted);margin-left:22px;font-size:13px}
+header.nav nav a:hover{color:var(--fg)}
+.hero{padding:88px 0 64px;border-bottom:1px solid var(--border)}
+.kbd{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--border);background:var(--surface);border-radius:6px;font-size:12px;color:var(--muted)}
+h1.tagline{font-family:'JetBrains Mono',monospace;font-size:clamp(36px,6vw,68px);line-height:1.05;letter-spacing:-0.02em;margin:24px 0 16px;font-weight:700}
+h1.tagline .delta{color:var(--warn)}
+h1.tagline .num{color:var(--accent)}
+.lede{color:var(--muted);font-size:18px;max-width:640px;margin-bottom:32px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:6px;font-size:14px;font-weight:500;border:1px solid var(--border);background:var(--surface);color:var(--fg);transition:.15s}
+.btn:hover{background:var(--surface-2);text-decoration:none}
+.btn.primary{background:#238636;border-color:#2ea043;color:#fff}
+.btn.primary:hover{background:#2ea043}
+.section{padding:72px 0;border-bottom:1px solid var(--border)}
+.section h2{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:24px;font-weight:600}
+.spec{border:1px solid var(--border);border-radius:8px;background:var(--surface);overflow:hidden}
+.spec-row{display:grid;grid-template-columns:220px 1fr 120px;gap:16px;padding:14px 20px;border-top:1px solid var(--border);font-size:14px;align-items:center}
+.spec-row:first-child{border-top:0;background:var(--canvas);color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.spec-row .name{font-family:'JetBrains Mono',monospace;font-weight:500}
+.spec-row .tol{font-family:'JetBrains Mono',monospace;color:var(--green);text-align:right}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about-grid p{color:var(--muted);font-size:16px}
+.shop-img{width:100%;border-radius:8px;border:1px solid var(--border);aspect-ratio:4/3;object-fit:cover;background:var(--surface)}
+.diff{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0;overflow:hidden;margin-bottom:18px}
+.diff .head{padding:10px 16px;background:var(--canvas);border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)}
+.diff .body{padding:18px 20px;font-size:15px}
+.diff .add{color:var(--green)}
+.diff .who{color:var(--muted);font-size:13px;margin-top:10px;font-family:'JetBrains Mono',monospace}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.codeblock{background:var(--canvas);border:1px solid var(--border);border-radius:8px;padding:20px 22px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.9}
+.codeblock .k{color:var(--accent)}
+.codeblock .v{color:var(--green)}
+.codeblock .c{color:var(--subtle)}
+.map{width:100%;height:280px;border:1px solid var(--border);border-radius:8px;filter:invert(0.92) hue-rotate(180deg)}
+footer{padding:48px 0 64px;color:var(--subtle);font-size:13px}
+footer .credit{margin-top:14px;color:var(--muted)}
+@media (max-width:700px){
+  .about-grid,.contact,.grid-2{grid-template-columns:1fr}
+  .spec-row{grid-template-columns:1fr;gap:6px;padding:14px 16px}
+  .spec-row:first-child{display:none}
+  .spec-row .tol{text-align:left}
+  header.nav nav{display:none}
+  .hero{padding:48px 0 40px}
+}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap row">
+  <div class="brand mono"><span class="dot"></span>pacific-cnc-works <span style="color:var(--muted);font-weight:400">/ vernon-ca</span></div>
+  <nav><a href="#capabilities">Capabilities</a><a href="#shop">The shop</a><a href="#quotes">Customer log</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <span class="kbd mono">// est. 1998 — third-generation job shop</span>
+  <h1 class="tagline">Tolerances to <span class="delta">±</span><span class="num">0.0005"</span><br>on parts that have to fit.</h1>
+  <p class="lede">3, 4, and 5-axis CNC milling and turning for aerospace, motorsport, and medical prototypes. One-off fixtures, full production runs, and the small batches nobody else will touch.</p>
+  <div class="cta-row">
+    <a class="btn primary mono" href="tel:+13235550144">$ call (323) 555-0144</a>
+    <a class="btn mono" href="#capabilities">view capabilities →</a>
+  </div>
+</div></section>
+
+<section class="section" id="capabilities"><div class="wrap">
+  <h2>Capabilities matrix</h2>
+  <div class="spec">
+    <div class="spec-row"><div>Process</div><div>Detail</div><div>Tolerance</div></div>
+    <div class="spec-row"><div class="name">5-axis milling</div><div>Haas UMC-750. Envelope 30"×20"×20". Aluminum, stainless, titanium, Inconel.</div><div class="tol">±0.0005"</div></div>
+    <div class="spec-row"><div class="name">3/4-axis milling</div><div>Two Haas VF-4 and a VF-2SS. Production fixturing and short runs.</div><div class="tol">±0.001"</div></div>
+    <div class="spec-row"><div class="name">Turning</div><div>Mori-Seiki NL-2500 with sub-spindle and live tooling.</div><div class="tol">±0.0005"</div></div>
+    <div class="spec-row"><div class="name">Inspection</div><div>Mitutoyo Crysta-Apex CMM. PPAP and FAIR documentation on request.</div><div class="tol">±0.0001"</div></div>
+    <div class="spec-row"><div class="name">Finishing</div><div>Anodizing, black oxide, passivation, and powder coat through audited partners.</div><div class="tol">spec/print</div></div>
+  </div>
+</div></section>
+
+<section class="section" id="shop"><div class="wrap">
+  <h2>About the shop</h2>
+  <div class="about-grid">
+    <div>
+      <p style="color:var(--fg);font-size:18px;margin-bottom:18px">My grandfather opened this shop with a single Bridgeport in 1998. Today we run nine machines under one roof — and we still answer the phone ourselves.</p>
+      <p>We take work other shops turn away: weird materials, low quantities, drawings that aren't quite finished. If you send us a sketch and a deadline, you'll get a quote back the same day, and a part that gauges on the first try.</p>
+      <p style="margin-top:18px">DFARS-compliant material sourcing. AS9100 in progress.</p>
+    </div>
+    <img class="shop-img" src="https://source.unsplash.com/800x600/?cnc-machine,milling" alt="CNC machine on the shop floor">
+  </div>
+</div></section>
+
+<section class="section" id="quotes"><div class="wrap">
+  <h2>Customer log</h2>
+  <div class="grid-2">
+    <div class="diff">
+      <div class="head">commit a3f81c · aerospace bracket, qty 40</div>
+      <div class="body"><span class="add">+ shipped two days early. CMM report attached. Zero rework.</span><div class="who">— Daniel K., supply chain lead</div></div>
+    </div>
+    <div class="diff">
+      <div class="head">commit 7b29ee · titanium prototype, qty 1</div>
+      <div class="body"><span class="add">+ they actually called me back to flag a callout that didn't add up. Saved the build.</span><div class="who">— Reina S., design engineer</div></div>
+    </div>
+    <div class="diff">
+      <div class="head">commit 2c14a0 · production fixture, qty 8</div>
+      <div class="body"><span class="add">+ third shop we tried. First one that gauged green on the FAI. Moving the rest of the program over.</span><div class="who">— Marcus T., ops manager</div></div>
+    </div>
+    <div class="diff">
+      <div class="head">commit 91ddfa · medical housing, qty 200</div>
+      <div class="body"><span class="add">+ ran the whole order without a single hiccup. PPAP delivered on day one.</span><div class="who">— Priya N., quality engineer</div></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section" id="contact"><div class="wrap">
+  <h2>Get a quote</h2>
+  <div class="contact">
+    <div>
+      <div class="codeblock">
+<span class="c"># shop.yaml</span><br>
+<span class="k">phone</span>:    <a class="v" href="tel:+13235550144">+1 (323) 555-0144</a><br>
+<span class="k">email</span>:    <a class="v" href="mailto:quote@pacificcnc.example">quote@pacificcnc.example</a><br>
+<span class="k">address</span>:  <span class="v">4218 Bandini Blvd, Vernon, CA 90058</span><br>
+<span class="k">hours</span>:<br>
+&nbsp;&nbsp;<span class="k">mon-fri</span>: <span class="v">06:00 – 17:00</span><br>
+&nbsp;&nbsp;<span class="k">sat</span>:     <span class="v">07:00 – 12:00</span><br>
+&nbsp;&nbsp;<span class="k">sun</span>:     <span class="v">closed</span><br>
+<span class="k">lead-time</span>: <span class="v">1–3 weeks typical, 48h rush available</span>
+      </div>
+      <div style="margin-top:22px"><a class="btn primary mono" href="tel:+13235550144">$ call (323) 555-0144</a></div>
+    </div>
+    <iframe class="map" loading="lazy" src="https://www.google.com/maps?q=4218+Bandini+Blvd+Vernon+CA&output=embed"></iframe>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="mono" style="color:var(--muted)">// dummy mockup — not a real business</div>
+  <div class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:jcpeng2002@gmail.com">jcpeng2002@gmail.com</a></div>
+</div></footer>
+</body></html>
