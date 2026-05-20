@@ -1,0 +1,308 @@
+<!doctype html>
+<!-- LJSites portfolio: dark GitHub aesthetic, repo-style hero, work grid with lightbox modal. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LJ Sites — sales-pitch websites for businesses without one</title>
+<meta name="description" content="LJ Sites builds clean, opinionated single-page mockups for small businesses that don't have a website yet. Pasadena, CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d1117;--canvas:#010409;--surface:#161b22;--surface-2:#21262d;--border:#30363d;--fg:#e6edf3;--muted:#8b949e;--subtle:#6e7681;--accent:#58a6ff;--green:#7ee787;--amber:#ffa657;--rose:#ff7b72;--purple:#d2a8ff}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* Repo-style header */
+header.repo{border-bottom:1px solid var(--border);background:var(--canvas);position:sticky;top:0;z-index:50}
+header.repo .row{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+header.repo .left{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:14.5px;font-weight:600}
+header.repo .left .org{color:var(--accent)}
+header.repo .left .slash{color:var(--subtle)}
+header.repo .left .repo{color:var(--fg)}
+header.repo .left .visibility{margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--muted);border:1px solid var(--border);padding:2px 9px;border-radius:999px;letter-spacing:.04em}
+header.repo nav a{color:var(--muted);font-size:13px;margin-left:22px;font-family:'JetBrains Mono',monospace}
+header.repo nav a:hover{color:var(--fg)}
+header.repo nav a.cta{padding:6px 14px;border:1px solid #2ea043;background:#238636;color:#fff;border-radius:6px;font-weight:600}
+header.repo nav a.cta:hover{background:#2ea043;text-decoration:none}
+
+/* Hero */
+.hero{padding:84px 0 72px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-30%;left:60%;width:60%;height:160%;background:radial-gradient(ellipse,rgba(88,166,255,0.07),transparent 60%);pointer-events:none}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;display:inline-flex;align-items:center;gap:10px;padding:5px 12px;border:1px solid var(--border);background:var(--surface);border-radius:999px}
+.kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.hero h1{font-size:clamp(46px,7vw,84px);font-weight:900;letter-spacing:-0.035em;line-height:1.0;margin-bottom:24px;max-width:920px}
+.hero h1 .acc{color:var(--accent)}
+.hero h1 .strike{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--rose);text-decoration-thickness:4px}
+.hero .lede{color:var(--muted);font-size:19px;max-width:640px;margin-bottom:36px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:13.5px;border:1px solid var(--border);background:var(--surface);color:var(--fg);font-weight:500;transition:.15s}
+.btn:hover{background:var(--surface-2);text-decoration:none}
+.btn.primary{background:#238636;border-color:#2ea043;color:#fff;font-weight:600}
+.btn.primary:hover{background:#2ea043}
+.btn.icon{padding:11px 16px}
+
+/* Stats strip */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:8px;background:var(--surface);overflow:hidden;margin-top:48px;max-width:840px}
+.stat{padding:22px 24px;border-right:1px solid var(--border)}
+.stat:last-child{border-right:0}
+.stat .v{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:var(--fg);line-height:1.1;margin-bottom:4px}
+.stat .v .acc{color:var(--accent)}
+.stat .k{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+
+/* Section base */
+.section{padding:88px 0;border-bottom:1px solid var(--border)}
+.section .head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:18px}
+.section .head h2{font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);font-weight:600}
+.section .head h2::before{content:"// ";color:var(--subtle)}
+.section .head .sub{color:var(--muted);font-size:14px;font-family:'JetBrains Mono',monospace}
+.section h3.title{font-size:38px;font-weight:800;letter-spacing:-0.024em;margin-bottom:14px;line-height:1.1;max-width:760px}
+.section .blurb{color:var(--muted);font-size:17px;max-width:680px;margin-bottom:48px}
+
+/* How it works — pipeline */
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:8px;background:var(--surface);overflow:hidden}
+.pipe .step{padding:28px 26px;border-right:1px solid var(--border);position:relative}
+.pipe .step:last-child{border-right:0}
+.pipe .step .n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.pipe .step .n .dot{width:18px;height:18px;border-radius:50%;background:var(--canvas);border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;font-size:11px}
+.pipe .step h4{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em}
+.pipe .step p{color:var(--muted);font-size:14px;line-height:1.55}
+.pipe .step .cmd{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green);padding:8px 12px;background:var(--canvas);border:1px solid var(--border);border-radius:6px}
+.pipe .step .cmd .c{color:var(--subtle)}
+
+/* Work grid */
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:zoom-in;transition:.18s ease;display:flex;flex-direction:column}
+.tile:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.4)}
+.tile .shot{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center;display:block;border-bottom:1px solid var(--border);background:var(--canvas)}
+.tile .meta{padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.tile .meta .row1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.tile .name{font-weight:700;font-size:16.5px;letter-spacing:-0.01em;color:var(--fg)}
+.tile .tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:3px 9px;border:1px solid var(--border);border-radius:999px;background:var(--canvas);white-space:nowrap}
+.tile .desc{color:var(--muted);font-size:13.5px;line-height:1.5}
+.tile .footer{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--subtle);padding:0 20px 16px;display:flex;justify-content:space-between;align-items:center}
+.tile .footer .lang{display:inline-flex;align-items:center;gap:6px}
+.tile .footer .lang .swatch{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:56px;align-items:start}
+.about-grid p{color:var(--muted);font-size:16.5px;margin-bottom:14px}
+.about-grid p.lead{color:var(--fg);font-size:22px;line-height:1.4;margin-bottom:18px;font-weight:500;letter-spacing:-0.01em}
+.about-grid .side{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.9}
+.about-grid .side .k{color:var(--muted)}.about-grid .side .v{color:var(--fg)}
+.about-grid .side .c{color:var(--subtle)}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.codeblock{background:var(--canvas);border:1px solid var(--border);border-radius:8px;padding:24px 28px;font-family:'JetBrains Mono',monospace;font-size:14.5px;line-height:2}
+.codeblock .k{color:var(--accent)}.codeblock .v{color:var(--green)}.codeblock .c{color:var(--subtle)}
+.contact .ask h3{font-size:24px;font-weight:700;letter-spacing:-0.015em;margin-bottom:12px}
+.contact .ask p{color:var(--muted);font-size:15.5px;margin-bottom:22px}
+
+footer{padding:48px 0 72px;color:var(--subtle);font-size:13px}
+footer .credit{margin-top:10px;color:var(--muted)}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--fg)}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;background:rgba(1,4,9,0.92);display:none;align-items:center;justify-content:center;z-index:100;padding:40px 24px;backdrop-filter:blur(6px)}
+.lb.open{display:flex}
+.lb .panel{max-width:1100px;width:100%;max-height:88vh;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column;overflow:hidden}
+.lb .panel .topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);background:var(--canvas)}
+.lb .panel .topbar .title{font-weight:700;font-size:16px;display:flex;align-items:center;gap:10px}
+.lb .panel .topbar .title .tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);font-weight:400;padding:2px 9px;border:1px solid var(--border);border-radius:999px}
+.lb .panel .topbar .actions{display:flex;gap:10px;align-items:center}
+.lb .panel .topbar .actions a{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent)}
+.lb .panel .topbar .close{background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:12px;cursor:pointer}
+.lb .panel .topbar .close:hover{background:var(--surface-2);color:var(--fg)}
+.lb .panel .img-wrap{overflow:auto;background:var(--canvas);max-height:78vh}
+.lb .panel img{display:block;width:100%;height:auto}
+
+@media (max-width:980px){
+  .stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--border)}
+  .pipe{grid-template-columns:1fr 1fr}.pipe .step:nth-child(2){border-right:0}.pipe .step:nth-child(1),.pipe .step:nth-child(2){border-bottom:1px solid var(--border)}
+  .work{grid-template-columns:1fr 1fr}
+  .about-grid,.contact{grid-template-columns:1fr;gap:30px}
+}
+@media (max-width:620px){
+  header.repo nav a:not(.cta){display:none}
+  .work,.pipe,.stats{grid-template-columns:1fr}
+  .pipe .step,.stat{border-right:0;border-bottom:1px solid var(--border)}
+  .pipe .step:last-child,.stat:last-child{border-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<header class="repo"><div class="wrap row">
+  <div class="left mono">
+    <span class="org">LJSites</span><span class="slash">/</span><span class="repo">LJSites</span>
+    <span class="visibility">Public</span>
+  </div>
+  <nav><a href="#how">How it works</a><a href="#work">Work</a><a href="#about">About</a><a class="cta" href="#contact">Get in touch</a></nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="kicker mono"><span class="dot"></span>SHIPPING SALES-PITCH SITES · LA AREA · 2026</div>
+  <h1>We built you <span class="strike">a website.</span><br>We built you <span class="acc">the website.</span></h1>
+  <p class="lede">LJ Sites makes single-page mockup websites for small businesses that don't have one yet. Find a place we love that's invisible online, ship them a real working site as a sales pitch, hand it over if they want it. No retainer. No agency.</p>
+  <div class="cta-row">
+    <a class="btn primary" href="#contact">$ start a conversation</a>
+    <a class="btn" href="#work">view recent work →</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="v mono"><span class="acc">20+</span></div><div class="k mono">sites shipped</div></div>
+    <div class="stat"><div class="v mono">~3 days</div><div class="k mono">discover → live</div></div>
+    <div class="stat"><div class="v mono">$0</div><div class="k mono">cost to look</div></div>
+    <div class="stat"><div class="v mono">LA</div><div class="k mono">area, for now</div></div>
+  </div>
+</div></section>
+
+<section class="section" id="how"><div class="wrap">
+  <div class="head"><h2>how it works</h2><div class="sub mono">// 4 commits, end to end</div></div>
+  <h3 class="title">A pipeline, not a sales funnel.</h3>
+  <p class="blurb">Every LJ site is a single self-contained HTML file: hand-tuned typography, real photos when we have them, an embedded map, and a call button. We build it speculatively. You only pay if you keep it.</p>
+  <div class="pipe">
+    <div class="step"><div class="n mono"><span class="dot">1</span>DISCOVER</div><h4>Find the business.</h4><p>We sweep the LA area for small businesses with no website — or only a Facebook page. Real places that deserve a real front door.</p><div class="cmd mono">$ run.py 1 <span class="c"># discover one</span></div></div>
+    <div class="step"><div class="n mono"><span class="dot">2</span>DESIGN</div><h4>Build the mockup.</h4><p>Photos, hours, menu, testimonies — all real. One archetype per site, hand-picked to fit the place. No templates.</p><div class="cmd mono">$ generate <span class="c"># single index.html</span></div></div>
+    <div class="step"><div class="n mono"><span class="dot">3</span>SHIP</div><h4>Publish to Pages.</h4><p>The mockup goes live on a clean URL within minutes. We hand it to the owner. They can see it, click it, call themselves from it.</p><div class="cmd mono">$ run.py --publish</div></div>
+    <div class="step"><div class="n mono"><span class="dot">4</span>HAND OVER</div><h4>If they want it, it's theirs.</h4><p>Flat fee, no monthly. We transfer the repo, point the domain, and stay on call for the first month. Otherwise, it just stays online as our portfolio.</p><div class="cmd mono">$ git remote set-url</div></div>
+  </div>
+</div></section>
+
+<section class="section" id="work"><div class="wrap">
+  <div class="head"><h2>recent work</h2><div class="sub mono">// dummy clients for demonstration</div></div>
+  <h3 class="title">Seven mockups. Seven archetypes. One house style.</h3>
+  <p class="blurb">A sampler of the kind of sites we ship. Click any tile to see it bigger — and "View live" in the corner opens the working page.</p>
+  <div class="work" id="work-grid"></div>
+</div></section>
+
+<section class="section" id="about"><div class="wrap">
+  <div class="head"><h2>about</h2></div>
+  <div class="about-grid">
+    <div>
+      <p class="lead">We're a two-person studio in Pasadena. We started LJ Sites because we kept walking into restaurants and shops we loved that didn't show up on Google — and we got tired of that.</p>
+      <p>So we built a pipeline: discover places without a real online front door, ship them a single-page sales-pitch site, and let the work speak for itself. No cold outreach, no proposals, no contracts to sign before you've seen what we'd actually make for you.</p>
+      <p>Every site is hand-tuned. We don't ship templates. We don't take retainers. If you keep it, we transfer the repo and disappear.</p>
+    </div>
+    <div class="side mono">
+      <span class="c"># about.yaml</span><br>
+      <span class="k">studio:</span>     <span class="v">LJ Sites</span><br>
+      <span class="k">based-in:</span>   <span class="v">Pasadena, CA</span><br>
+      <span class="k">serving:</span>    <span class="v">Greater LA</span><br>
+      <span class="k">founded:</span>    <span class="v">2025</span><br>
+      <span class="k">team:</span>       <span class="v">2 people</span><br>
+      <span class="k">stack:</span>      <span class="v">HTML, CSS, taste</span><br>
+      <span class="k">retainer:</span>   <span class="v" style="color:var(--rose)">never</span><br>
+      <span class="k">deliverable:</span> <span class="v">one HTML file</span>
+    </div>
+  </div>
+</div></section>
+
+<section class="section" id="contact"><div class="wrap">
+  <div class="head"><h2>get in touch</h2></div>
+  <div class="contact">
+    <div class="codeblock">
+<span class="c"># lj-sites/contact.yaml</span><br>
+<span class="k">email</span>:   <a class="v" href="mailto:jcpeng2002@gmail.com">jcpeng2002@gmail.com</a><br>
+<span class="k">phone</span>:   <span class="v">on request</span><br>
+<span class="k">based</span>:   <span class="v">Pasadena, CA</span><br>
+<span class="k">serving</span>: <span class="v">Greater LA — Pasadena to Long Beach</span><br>
+<br>
+<span class="c"># how-to-reach-us</span><br>
+<span class="k">step-1</span>: <span class="v">email a sentence about your business</span><br>
+<span class="k">step-2</span>: <span class="v">we reply within a day</span><br>
+<span class="k">step-3</span>: <span class="v">we send you a mockup</span><br>
+<span class="k">step-4</span>: <span class="v">you decide if you want it</span>
+    </div>
+    <div class="ask">
+      <h3>One sentence is enough.</h3>
+      <p>Tell us the name of the place, what you do, and where you are. We'll come back with a draft you can look at the same week. There's nothing to sign, nothing to commit to, and no follow-up calls.</p>
+      <a class="btn primary" href="mailto:jcpeng2002@gmail.com">$ email jcpeng2002@gmail.com</a>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="mono" style="display:flex;gap:18px;flex-wrap:wrap;color:var(--muted)">
+    <span>© 2026 LJ Sites</span>
+    <span>·</span>
+    <span><a href="#how">how it works</a></span>
+    <span><a href="#work">work</a></span>
+    <span><a href="#about">about</a></span>
+    <span><a href="#contact">contact</a></span>
+  </div>
+  <div class="credit mono">// built by LJ Sites · the mockups above are dummies (not real businesses)</div>
+</div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Mockup preview">
+  <div class="panel">
+    <div class="topbar">
+      <div class="title"><span id="lb-title"></span><span class="tag mono" id="lb-tag"></span></div>
+      <div class="actions"><a id="lb-live" class="mono" href="#" target="_blank" rel="noopener">View live →</a><button class="close mono" onclick="closeLB()">close · esc</button></div>
+    </div>
+    <div class="img-wrap"><img id="lb-img" src="" alt=""></div>
+  </div>
+</div>
+
+<script>
+const WORK = [
+  {slug:"pacific-cnc",       name:"Pacific CNC Works",    tag:"machinist · vernon",      desc:"Industrial spec-sheet. Capabilities as a data table. Tolerances as the hook.",        lang:"#58a6ff"},
+  {slug:"aurora-studio",     name:"Aurora Studio",        tag:"salon · silver-lake",     desc:"Dark editorial. Restrained serif type. Services as a quiet price column.",            lang:"#d2a8ff"},
+  {slug:"crust-and-crumb",   name:"Crust & Crumb",        tag:"bakery · highland-park",  desc:"Readme-tab framing. Today's bake on the page. Menu as a directory listing.",          lang:"#ffa657"},
+  {slug:"eastside-auto",     name:"Eastside Auto",        tag:"repair · boyle-heights",  desc:"Diagnostic terminal. Services as $ commands. Customer log as resolved tickets.",      lang:"#7ee787"},
+  {slug:"tacos-coronel",     name:"Tacos Coronel",        tag:"taquería · east-la",      desc:"Neon-dark. Menu as a JSON object. Price-chip cards. One accent.",                     lang:"#ffa657"},
+  {slug:"switchback-coffee", name:"Switchback Coffee",    tag:"roaster · eagle-rock",    desc:"Brutalist grid. This-week-on-bar table. Hours as a build-status strip.",              lang:"#ff7b72"},
+  {slug:"alvarado-florist",  name:"Lupine & Larkspur",    tag:"florist · echo-park",     desc:"Dark editorial florist. Tall photo column. Pricing as a hand-set list.",              lang:"#ffa7c4"},
+];
+
+const grid = document.getElementById("work-grid");
+grid.innerHTML = WORK.map(w => `
+  <div class="tile" data-slug="${w.slug}" data-name="${w.name}" data-tag="${w.tag}">
+    <img class="shot" src="screens/${w.slug}.jpg" alt="${w.name} preview" loading="lazy">
+    <div class="meta">
+      <div class="row1"><div class="name">${w.name}</div><div class="tag mono">${w.tag}</div></div>
+      <div class="desc">${w.desc}</div>
+    </div>
+    <div class="footer">
+      <span class="lang"><span class="swatch" style="background:${w.lang}"></span>HTML · single-page</span>
+      <span>open preview ↗</span>
+    </div>
+  </div>
+`).join("");
+
+const lb = document.getElementById("lb");
+const lbImg = document.getElementById("lb-img");
+const lbTitle = document.getElementById("lb-title");
+const lbTag = document.getElementById("lb-tag");
+const lbLive = document.getElementById("lb-live");
+
+function openLB(slug, name, tag){
+  lbImg.src = `screens/${slug}.jpg`;
+  lbImg.alt = `${name} mockup screenshot`;
+  lbTitle.textContent = name;
+  lbTag.textContent = tag;
+  lbLive.href = `${slug}.html`;
+  lb.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeLB(){
+  lb.classList.remove("open");
+  document.body.style.overflow = "";
+}
+grid.addEventListener("click", e => {
+  const t = e.target.closest(".tile");
+  if (!t) return;
+  openLB(t.dataset.slug, t.dataset.name, t.dataset.tag);
+});
+lb.addEventListener("click", e => { if (e.target === lb) closeLB(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeLB(); });
+</script>
+</body>
+</html>
