@@ -1,0 +1,150 @@
+<!doctype html>
+<!-- Archetype: dark editorial florist. Tall photo column, services as small bouquets in a pricing list, soft-rose accent. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lupine & Larkspur — Florist, Echo Park</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d1117;--canvas:#010409;--surface:#161b22;--surface-2:#21262d;--border:#30363d;--fg:#e6edf3;--muted:#8b949e;--subtle:#6e7681;--rose:#ffa7c4;--blush:#f0c6c6;--green:#7ee787;--accent:#ffa7c4}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;line-height:1.6}
+.mono{font-family:'JetBrains Mono',monospace}
+.serif{font-family:'Fraunces',serif}
+a{color:var(--rose);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+header{padding:22px 0;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(13,17,23,0.86);backdrop-filter:blur(8px);z-index:10}
+header .row{display:flex;justify-content:space-between;align-items:baseline}
+header .brand{font-family:'Fraunces',serif;font-size:22px;font-weight:500;letter-spacing:-0.01em}
+header .brand .amp{font-style:italic;color:var(--rose);font-weight:400}
+header .brand .meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);margin-left:10px;font-weight:400}
+header nav a{color:var(--muted);font-size:13px;margin-left:22px}
+header nav a:hover{color:var(--fg)}
+.hero{padding:0;border-bottom:1px solid var(--border)}
+.hero .grid{display:grid;grid-template-columns:1fr 0.85fr;min-height:540px}
+.hero .left{padding:80px 56px 80px 0;display:flex;flex-direction:column;justify-content:center}
+.hero .right{border-left:1px solid var(--border);position:relative;overflow:hidden}
+.hero .right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(0.85) brightness(0.85)}
+.hero .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.hero .kicker .dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 10px var(--green)}
+.hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(46px,7vw,84px);line-height:1.0;letter-spacing:-0.025em;margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--rose);font-weight:400}
+.hero .lede{color:var(--muted);font-size:17px;max-width:480px;margin-bottom:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:4px;background:transparent;border:1px solid var(--fg);color:var(--fg);font-size:14px;font-family:'JetBrains Mono',monospace;font-weight:500}
+.btn:hover{background:var(--fg);color:var(--bg);text-decoration:none}
+.btn.primary{background:var(--rose);color:var(--canvas);border-color:var(--rose);font-weight:600}
+.btn.primary:hover{background:#fff;color:var(--canvas)}
+.section{padding:80px 0;border-bottom:1px solid var(--border)}
+.kicker-row{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.section h2{font-family:'Fraunces',serif;font-size:40px;font-weight:500;letter-spacing:-0.018em;margin-bottom:38px;max-width:620px;line-height:1.1}
+.arr{display:grid;grid-template-columns:1fr auto;column-gap:32px;border-top:1px solid var(--border)}
+.arr-row{display:contents}
+.arr-row .name,.arr-row .price{padding:22px 0;border-bottom:1px solid var(--border);font-size:17px}
+.arr-row .name{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-0.005em}
+.arr-row .name small{display:block;font-family:'Inter',sans-serif;color:var(--muted);font-size:13.5px;margin-top:6px;font-weight:400}
+.arr-row .price{font-family:'JetBrains Mono',monospace;color:var(--rose);text-align:right;align-self:start}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.about p{color:var(--muted);font-size:17px;margin-bottom:14px}
+.about p.lead{font-family:'Fraunces',serif;color:var(--fg);font-size:24px;line-height:1.35;margin-bottom:18px;font-weight:400}
+.about img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;border:1px solid var(--border);filter:saturate(0.85)}
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:36px}
+.q{border-left:1px solid var(--rose);padding:6px 0 6px 22px}
+.q .text{font-family:'Fraunces',serif;font-style:italic;font-size:19px;line-height:1.5;color:var(--fg);margin-bottom:12px;font-weight:400}
+.q .who{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.info{font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2.1}
+.info .k{color:var(--muted)}.info .v{color:var(--fg)}
+.map{width:100%;height:340px;border:1px solid var(--border);border-radius:4px;filter:invert(0.92) hue-rotate(180deg)}
+footer{padding:48px 0 64px;color:var(--subtle);font-size:13px}
+footer .credit{margin-top:10px;color:var(--muted)}
+@media (max-width:760px){
+  .hero .grid{grid-template-columns:1fr}
+  .hero .left{padding:56px 0}
+  .hero .right{display:none}
+  .about,.quotes,.visit{grid-template-columns:1fr;gap:30px}
+  .section h2{font-size:32px}
+  header nav{display:none}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap row">
+  <div><span class="brand serif">Lupine <span class="amp">&</span> Larkspur</span><span class="brand meta mono">// echo-park</span></div>
+  <nav><a href="#arrangements">Arrangements</a><a href="#about">About</a><a href="#words">Words</a><a href="#visit">Visit</a></nav>
+</div></header>
+
+<section class="hero"><div class="wrap" style="padding:0 28px">
+  <div class="grid">
+    <div class="left">
+      <div class="kicker"><span class="dot"></span>BOOKING WEDDINGS · SEPT–NOV</div>
+      <h1>Flowers that look like they were <em>picked</em>, not arranged.</h1>
+      <p class="lede">A by-appointment florist on Sunset, west of Echo Park Lake. Foraged-feeling weddings, weekly home subscriptions, and the occasional walk-in bouquet for the friend you forgot it was their birthday.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn primary mono" href="tel:+13235550174">(323) 555-0174</a><a class="btn mono" href="#arrangements">view list →</a></div>
+    </div>
+    <div class="right"><img src="https://source.unsplash.com/700x900/?dark-floral,arrangement-moody" alt="Dark floral arrangement"></div>
+  </div>
+</div></section>
+
+<section class="section" id="arrangements"><div class="wrap">
+  <div class="kicker-row mono">// arrangements</div>
+  <h2>What we make — and what it costs.</h2>
+  <div class="arr">
+    <div class="arr-row"><div class="name">Hand-tied bouquet<small>Seasonal stems, wrapped in kraft. 30 cm.</small></div><div class="price">from $65</div></div>
+    <div class="arr-row"><div class="name">Studio arrangement<small>In a footed vessel. Three sizes (S / M / L).</small></div><div class="price">$95 / $135 / $195</div></div>
+    <div class="arr-row"><div class="name">Sympathy bouquet<small>Soft palette, white and cream. Same-day available before noon.</small></div><div class="price">from $85</div></div>
+    <div class="arr-row"><div class="name">Weekly home subscription<small>Bouquet delivered every Friday. 4-week minimum.</small></div><div class="price">$55 / week</div></div>
+    <div class="arr-row"><div class="name">Event florals · consult<small>Dinner parties, baby showers, small ceremonies.</small></div><div class="price">from $400</div></div>
+    <div class="arr-row"><div class="name">Weddings<small>Full design + day-of install. Booking 6–9 months out.</small></div><div class="price">from $3,500</div></div>
+  </div>
+</div></section>
+
+<section class="section" id="about"><div class="wrap">
+  <div class="kicker-row mono">// about</div>
+  <div class="about">
+    <div>
+      <p class="lead">A two-person studio working with seasonal California growers — and one small flower farm we love in Carpinteria.</p>
+      <p>We started in 2020, working out of a converted bungalow on Lemoyne Street. The studio you see today is the third move and the last one — we own the storefront now, and we're staying.</p>
+      <p>We work mostly by appointment, but if you see the front door open on a Friday afternoon, it means we have bouquets ready to go. Come in.</p>
+    </div>
+    <img src="https://source.unsplash.com/700x900/?florist-studio,workbench" alt="Florist studio">
+  </div>
+</div></section>
+
+<section class="section" id="words"><div class="wrap">
+  <div class="kicker-row mono">// words</div>
+  <h2>From the wedding emails and the Friday DMs.</h2>
+  <div class="quotes">
+    <div class="q"><p class="text">"They listened to my four-sentence description and gave me back something better than the mood board. I cried twice on my wedding day, both times at flowers."</p><div class="who mono">— Hannah G.</div></div>
+    <div class="q"><p class="text">"Subscribed for a month as a treat. We're on month nine. The Friday bouquet is the best thing in my week — every week, somehow different."</p><div class="who mono">— Reese A.</div></div>
+    <div class="q"><p class="text">"Walked in for a last-minute birthday bouquet at 4pm. They built me something stunning in fifteen minutes and only charged me $60."</p><div class="who mono">— Mateo D.</div></div>
+    <div class="q"><p class="text">"Soft, foraged, never matchy. If you want roses-on-roses ask someone else; if you want flowers that look like they were grown for you, come here."</p><div class="who mono">— Ines V.</div></div>
+  </div>
+</div></section>
+
+<section class="section" id="visit"><div class="wrap">
+  <div class="kicker-row mono">// visit</div>
+  <h2>By appointment, mostly. Walk in Fridays.</h2>
+  <div class="visit">
+    <div>
+      <div class="info">
+        <div><span class="k">address&nbsp;&nbsp;</span><span class="v">1840 W Sunset Blvd, Los Angeles, CA 90026</span></div>
+        <div><span class="k">phone&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="v" href="tel:+13235550174">(323) 555-0174</a></div>
+        <div><span class="k">email&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="v" href="mailto:studio@lupineandlarkspur.example">studio@lupineandlarkspur.example</a></div>
+        <div style="margin-top:18px"><span class="k">tues–thu&nbsp;</span><span class="v">by appointment</span></div>
+        <div><span class="k">friday&nbsp;&nbsp;&nbsp;</span><span class="v">11:00 — 18:00 (walk-in)</span></div>
+        <div><span class="k">saturday&nbsp;</span><span class="v">10:00 — 16:00 (walk-in)</span></div>
+        <div><span class="k">sun–mon&nbsp;&nbsp;</span><span class="v">closed</span></div>
+        <div style="margin-top:24px"><a class="btn primary mono" href="tel:+13235550174">(323) 555-0174</a></div>
+      </div>
+    </div>
+    <iframe class="map" loading="lazy" src="https://www.google.com/maps?q=W+Sunset+Blvd+Echo+Park+CA&output=embed"></iframe>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="mono" style="color:var(--muted)">// dummy mockup — not a real business</div>
+  <div class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:jcpeng2002@gmail.com">jcpeng2002@gmail.com</a></div>
+</div></footer>
+</body></html>
