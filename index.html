@@ -263,9 +263,25 @@ footer .credit a{color:var(--accent-text)}
 .plan-feat li .sub{display:block;color:var(--fg-mute);font-size:12px;margin-top:2px;line-height:1.45}
 .plan .btn{align-self:flex-start;margin-top:auto}
 
+/* ============ Why a website ============ */
+.why-head{max-width:780px;margin-bottom:40px}
+.why-head h2{margin-bottom:16px}
+.why-head p{color:var(--fg-mute);font-size:15.5px;line-height:1.65}
+.why-head-2{margin-top:84px;padding-top:76px;border-top:1px solid var(--border-mute)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.why-card{background:var(--subtle);border:1px solid var(--border-mute);border-radius:8px;padding:28px 28px 30px;transition:.2s}
+.why-card:hover{border-color:var(--border)}
+.why-card .why-n{font-family:var(--mono);font-size:10.5px;color:var(--accent-text);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:18px;opacity:.85}
+.why-card h4{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-0.012em;color:var(--fg);margin-bottom:10px;line-height:1.2}
+.why-card p{color:var(--fg-mute);font-size:14px;line-height:1.6}
+.why-card p em,.why-card h4 em{color:var(--accent-text);font-style:italic}
+.why-close{font-family:var(--serif);font-size:26px;color:var(--fg);text-align:center;margin-top:60px;letter-spacing:-0.018em;line-height:1.3}
+.why-close em{color:var(--accent-text);font-style:italic}
+
 /* ============ Responsive ============ */
 @media (max-width:1100px){
   .repos{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(3,1fr)}
   .features{grid-template-columns:repeat(2,1fr)}
   .pipe{grid-template-columns:repeat(2,1fr)}
   .pipe .step:nth-child(2){border-right:0}
@@ -280,7 +296,7 @@ footer .credit a{color:var(--accent-text)}
   .stat-strip{grid-template-columns:repeat(2,1fr);margin-top:48px}
   .stat-strip .s:nth-child(2){border-right:0}
   .stat-strip .s:nth-child(1),.stat-strip .s:nth-child(2){border-bottom:1px solid var(--border-mute)}
-  .repos,.features,.pipe,.about,.contact,.plans{grid-template-columns:1fr;gap:32px}
+  .repos,.features,.pipe,.about,.contact,.plans,.why-grid{grid-template-columns:1fr;gap:32px}
   .plans{gap:18px}
   .pipe .step{padding:24px 0;border-right:0;border-bottom:1px solid var(--border-mute)}
   .pipe .step:last-child{border-bottom:0}
@@ -325,9 +341,60 @@ footer .credit a{color:var(--accent-text)}
   </div>
 </div></section>
 
+<!-- ============ Why a website ============ -->
+<section class="section" id="why"><div class="wrap">
+  <div class="sublabel">01 · Why a website</div>
+
+  <div class="why-head">
+    <h2 class="serif">Your customers are already looking.<br><em>The question is what they find.</em></h2>
+    <p>Almost everyone checks a business out online before they ever walk in. Without a website, that's a thin map pin, a phone number, and whatever a stranger wrote in a review. A real site makes that first impression one you control.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-n">01</div>
+      <h4 class="serif">They look before they show up</h4>
+      <p>Search you up, find nothing — or a competitor sitting on top — and you're gone before the phone rings.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-n">02</div>
+      <h4 class="serif">A map pin isn't a front door</h4>
+      <p>Maps says you exist. A site says <em>why you</em> — your story, your photos, your services.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-n">03</div>
+      <h4 class="serif">Open when you're closed</h4>
+      <p>Hours, menu, and bookings answered at 11pm on a Sunday — long after the phone goes quiet.</p>
+    </div>
+  </div>
+
+  <div class="why-head why-head-2">
+    <h2 class="serif">A site is home base.<br><em>We help people find it.</em></h2>
+    <p>A website only works if people land on it — so everything else we set up points right back to the site we built you.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-n">Scan</div>
+      <h4 class="serif">QR codes</h4>
+      <p>Window, menu, receipts, business cards — one scan takes a customer straight to your site.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-n">Reach</div>
+      <h4 class="serif">Your ads land somewhere real</h4>
+      <p>Running your own Google or Instagram ads? Point them at a site worth landing on, not a map pin.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-n">Follow</div>
+      <h4 class="serif">Social that links back</h4>
+      <p>Your Instagram and Facebook wired to the site, so every new follow has somewhere to go.</p>
+    </div>
+  </div>
+
+  <p class="why-close serif">One front door. <em>Every road leading to it.</em></p>
+</div></section>
+
 <!-- ============ Pinned repos ============ -->
 <section class="section" id="pinned"><div class="wrap">
-  <div class="sublabel">01 · Selected work</div>
+  <div class="sublabel">02 · Selected work</div>
   <div class="pin-head">
     <div class="copy">
       <h2 class="serif">Recent <em>mockups</em>, shipped.</h2>
@@ -429,7 +496,7 @@ footer .credit a{color:var(--accent-text)}
 
 <!-- ============ Feature gallery ============ -->
 <section class="section" id="feature-gallery"><div class="wrap">
-  <div class="sublabel">02 · Site features</div>
+  <div class="sublabel">03 · Site features</div>
   <div class="gallery-head">
     <div class="copy">
       <h2 class="serif">Every mockup ships <em>real features</em>.</h2>
@@ -508,7 +575,7 @@ footer .credit a{color:var(--accent-text)}
 
 <!-- ============ How it works ============ -->
 <section class="section" id="how"><div class="wrap">
-  <div class="sublabel">03 · How it works</div>
+  <div class="sublabel">04 · How it works</div>
   <div class="how-head">
     <h2 class="serif">A pipeline, <em>not a sales funnel.</em></h2>
     <p>Every LJ Sites mockup ships with hand-tuned typography, real photos pulled live from Google Places, an embedded map, and a working call button. We build the mockup speculatively — you only sign on once you've seen the work.</p>
@@ -523,7 +590,7 @@ footer .credit a{color:var(--accent-text)}
 
 <!-- ============ About ============ -->
 <section class="section" id="about"><div class="wrap">
-  <div class="sublabel">04 · About</div>
+  <div class="sublabel">05 · About</div>
   <div class="about">
     <div class="copy">
       <h2 class="serif">A two-person studio<br><em>in LA.</em></h2>
@@ -543,7 +610,7 @@ footer .credit a{color:var(--accent-text)}
 
 <!-- ============ Pricing ============ -->
 <section class="section" id="pricing"><div class="wrap">
-  <div class="sublabel">05 · Pricing</div>
+  <div class="sublabel">06 · Pricing</div>
   <div class="pricing-head">
     <h2 class="serif">Plain pricing on the front. <em>A conversation on the rest.</em></h2>
     <p>One honest number for the front-end work most small businesses actually need. For everything beyond that — ordering, reservations, accounts, payments — we sit down with you first and price only what you'll really use.</p>
@@ -617,7 +684,7 @@ footer .credit a{color:var(--accent-text)}
 
 <!-- ============ Contact ============ -->
 <section class="section" id="contact"><div class="wrap">
-  <div class="sublabel">06 · Get in touch</div>
+  <div class="sublabel">07 · Get in touch</div>
   <div class="contact">
     <div class="form">
       <div class="form-body">
